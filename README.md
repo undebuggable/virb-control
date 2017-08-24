@@ -4,7 +4,7 @@ Web browser client for Garmin VIRB Elite action camera.
 Introduction
 ================
 
-This project is a web browser client for a WiFi enabled action camera Garmin VIRB Elite. The camera emits WiFi network and exposes [JSON based API briefly described here](https://forums.garmin.com/forum/mac-windows-software/windows-software/virb-edit-aa/56554-).
+This project is a web browser client for a WiFi enabled action camera Garmin VIRB Elite. The camera emits WiFi network and exposes [JSON based API briefly described on Garmin forum](https://forums.garmin.com/forum/mac-windows-software/windows-software/virb-edit-aa/56554-).
 
 After connecting the computer to the WiFi network emitted by the camera, this client opened in web browser will listen for the available services at the URL `http://192.168.0.1/virb` and will allow the user to control the camera settings, trigger video recording, trigger making a photo, stream the video from the camera, and preview the details of the device.
 
