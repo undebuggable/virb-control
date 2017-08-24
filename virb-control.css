@@ -1,0 +1,54 @@
+body {
+  font-family: Arial;
+  font-size: 0.9em;
+}
+ol {
+  display: block;
+  float: left;
+  margin-bottom: 1em;
+}
+ol dt {
+  float: left;
+  margin: 0 1em .5em 0;
+  font-weight: bold;
+  
+}
+ol dd {
+  float: left;
+  margin: 0 3em .5em 0;
+}
+aside {
+  clear: both;
+}
+.detecting fieldset {
+  display: none;
+}
+fieldset {
+  width: 45%;
+  display: none;
+}
+aside fieldset {
+  width: 29%;
+}
+fieldset, aside fieldset {
+  float: left;
+  margin: 0 1em 1em 0;
+}
+fieldset input[type=button] {
+  padding: 1em 0.75em;
+  margin: 0 1em 1em 0;
+}
+fieldset input[type=checkbox], fieldset input[type=radio] {
+  line-height: 2em;
+  vertical-align: middle;
+  padding: 0;
+  margin: 0.4em 0.4em 0 0;
+}
+fieldset label {
+  display: block;
+  line-height: 2em;
+  vertical-align: middle;
+}
+fieldset input {
+  float: left;
+}

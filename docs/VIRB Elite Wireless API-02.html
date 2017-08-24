@@ -1,0 +1,2691 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en" id="vbulletin_html">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<meta id="e_vb_meta_bburl" name="vb_meta_bburl" content="https://forums.garmin.com" />
+<base href="https://forums.garmin.com/" /><!--[if IE]></base><![endif]-->
+<meta name="generator" content="vBulletin 4.2.2" />
+<meta http-equiv="X-UA-Compatible" content="IE=9" />
+
+	<link rel="Shortcut Icon" href="favicon.ico" type="image/x-icon" />
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+<!--
+	if (typeof YAHOO === 'undefined') // Load ALL YUI Local
+	{
+		document.write('<script type="text/javascript" src="clientscript/yui/yuiloader-dom-event/yuiloader-dom-event.js?v=422"><\/script>');
+		document.write('<script type="text/javascript" src="clientscript/yui/connection/connection-min.js?v=422"><\/script>');
+		var yuipath = 'clientscript/yui';
+		var yuicombopath = '';
+		var remoteyui = false;
+	}
+	else	// Load Rest of YUI remotely (where possible)
+	{
+		var yuipath = 'clientscript/yui';
+		var yuicombopath = '';
+		var remoteyui = true;
+		if (!yuicombopath)
+		{
+			document.write('<script type="text/javascript" src="clientscript/yui/connection/connection-min.js?v=422"><\/script>');
+		}
+	}
+	var SESSIONURL = "";
+	var SECURITYTOKEN = "guest";
+	var IMGDIR_MISC = "images/misc";
+	var IMGDIR_BUTTON = "images/buttons";
+	var vb_disable_ajax = parseInt("0", 10);
+	var SIMPLEVERSION = "422";
+	var BBURL = "https://forums.garmin.com";
+	var LOGGEDIN = 0 > 0 ? true : false;
+	var THIS_SCRIPT = "showthread";
+	var RELPATH = "showthread.php?78617-VIRB-Elite-Wireless-API/page3";
+	var PATHS = {
+		forum : "",
+		cms   : "",
+		blog  : ""
+	};
+	var AJAXBASEURL = "https://forums.garmin.com/";
+// -->
+</script>
+<!-- Added by Scott and Alina -->
+<script type="text/javascript" src="//tags.tiqcdn.com/utag/garmin/main/prod/utag.js"></script>
+<script type="text/javascript" src="https://forums.garmin.com/clientscript/vbulletin-core.js?v=422"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+<script type="text/javascript" src="https://sso.garmin.com/sso/js/gauth-widget.js?20120627"></script>
+<script type="text/javascript">
+gauthShouldOpenCreateAccount = false;
+
+ssoOpenCreateAccount = function() {
+	gauthShouldOpenCreateAccount = true;
+	$('#gauth-widget').dialog('open');
+};
+
+ssoOpenLogin = function() {
+	$('#gauth-widget').dialog('open');
+};
+
+$(document).ready(function() {
+	var hasLoaded = false;
+
+	$('#gauth-widget').dialog({
+		autoOpen: false,
+		height: 400,
+		width: 270,
+		modal: true,
+		draggable: false,
+		resizable: false,
+		modal: true,
+		zIndex: 500, // The CreateAccount dialog sets itself at 1000-1002
+					 // and we want to be below this.
+		open: function() {
+			if (!hasLoaded) {
+				hasLoaded = true;
+
+				GAUTH.init({
+					"locale" : "en",
+					"gauthHost":            "https://sso.garmin.com/sso",
+					"callBackWebHostUrl":   "olaxpa-forum01",
+					"clientId":             "Forums",
+					"id":                   "gauth-widget",
+					"rememberMeShown":      true,
+					 "displayNameShown":      true,
+					"createAccountShown":   true,
+					"redirectAfterAccountLoginUrl":"/showthread.php?78617-VIRB-Elite-Wireless-API/page3",
+					"redirectAfterAccountCreationUrl":"/showthread.php?78617-VIRB-Elite-Wireless-API/page3"
+				});
+
+				GAUTH.loadGAuth();
+			}
+
+			if (gauthShouldOpenCreateAccount) {
+				gauthShouldOpenCreateAccount = false;
+				GAUTH.openCreateAccount();
+			}
+		}
+	});
+
+	$('#open-gauth-widget').click(ssoOpenLogin);
+	$('#open-gauth-widget-register').click(ssoOpenCreateAccount);
+	$('#light_box_fade').remove();
+});
+</script>
+
+
+	<link rel="alternate" type="application/rss+xml" title="Garmin Forums RSS Feed" href="https://forums.garmin.com/external.php?type=RSS2" />
+	
+		<link rel="alternate" type="application/rss+xml" title="Garmin Forums - VIRB Edit - RSS Feed" href="https://forums.garmin.com/external.php?type=RSS2&amp;forumids=426" />
+	
+
+
+
+	<link rel="stylesheet" type="text/css" href="css.php?styleid=5&amp;langid=1&amp;d=1434635702&amp;td=ltr&amp;sheet=bbcode.css,editor.css,popupmenu.css,reset-fonts.css,vbulletin.css,vbulletin-chrome.css,vbulletin-formcontrols.css,,sso_login_form.css" />
+
+	<!--[if lt IE 8]>
+	<link rel="stylesheet" type="text/css" href="css.php?styleid=5&amp;langid=1&amp;d=1434635702&amp;td=ltr&amp;sheet=popupmenu-ie.css,vbulletin-ie.css,vbulletin-chrome-ie.css,vbulletin-formcontrols-ie.css,editor-ie.css" />
+	<![endif]-->
+
+
+	<meta name="keywords" content="connect, pc/tablet, screen, http://www8.garmin.com/manuals/webhelp/virbx-xe/en-us/guid-15023f6d-0fbc-4719-adce-ffde94b470d2.html, elite, missed, option, correct, wireless, export, options, solution, wi-fi, video, aware" />
+	<meta name="description" content="Note: this post is obsolete. Please use the official API at http://developer.garmin.com/virb. 
+ 
+It is possible to communicate to your VIRB Elite wirelessly (the Garmin VIRB iOS and Android app make use of that feature). 
+ 
+A few people here an the forums asked how to do this, so I asked around and got permission to publish this post. 
+ 
+Disclaimer: This is a somewhat advanced topic and you probably won't want to do this unless you have some programming experience. I'll try to answer questions" />
+
+	<title> VIRB Elite Wireless API - Page 3</title>
+	<link rel="canonical" href="showthread.php?78617-VIRB-Elite-Wireless-API/page3" />
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+	
+		<link rel="stylesheet" type="text/css" href="css.php?styleid=5&amp;langid=1&amp;d=1434635702&amp;td=ltr&amp;sheet=toolsmenu.css,postlist.css,showthread.css,postbit.css,options.css,attachment.css,poll.css,lightbox.css" />
+	
+	<!--[if lt IE 8]><link rel="stylesheet" type="text/css" href="css.php?styleid=5&amp;langid=1&amp;d=1434635702&amp;td=ltr&amp;sheet=toolsmenu-ie.css,postlist-ie.css,showthread-ie.css,postbit-ie.css,poll-ie.css" /><![endif]-->
+<link rel="stylesheet" type="text/css" href="css.php?styleid=5&amp;langid=1&amp;d=1434635702&amp;td=ltr&amp;sheet=additional.css" />
+
+</head>
+
+<body>
+
+<div style="display: none;"><div id="gauth-widget" title="Login"></div></div>
+<div class="above_body"> <!-- closing tag is in template navbar -->
+<div id="header" class="floatcontainer doc_header">
+	<div><a name="top" href="http://www.garmin.com/en-US" class="logo-image"><img src="images/garmin/logo.jpg" alt="Garmin Forums" /></a></div>
+	<div id="toplinks" class="toplinks">
+		
+			<ul class="nouser">
+				<li><a href="javascript:;" id="open-gauth-widget">Log in</a></li>
+				<li><a href="javascript:;" id="open-gauth-widget-register">Register</a></li>
+				<noscript><li><a href="javascript:;">You must enable JavaScript to log in</a></li></noscript>
+				<li><a rel="help" href="faq.php">Help</a></li>
+				
+			</ul>
+		
+	</div>
+	<div class="ad_global_header">
+		
+		
+	</div>
+	<hr />
+</div>
+<div id="navbar" class="navbar">
+	<ul id="navtabs" class="navtabs floatcontainer">
+		
+		
+	
+		<li  id="vbtab_whatsnew">
+			<a class="navtab" href="activity.php">What's New?</a>
+		</li>
+		
+		
+
+	
+		<li class="selected" id="vbtab_forum">
+			<a class="navtab" href="forum.php">Forum</a>
+		</li>
+		
+		
+			<ul class="floatcontainer">
+				
+					
+						
+							<li id="vbflink_newposts"><a href="search.php?do=getnew&amp;contenttype=vBForum_Post">New Posts</a></li>
+						
+					
+				
+					
+						
+							<li id="vbflink_faq"><a href="faq.php">FAQ</a></li>
+						
+					
+				
+					
+						
+							<li id="vbflink_calendar"><a href="calendar.php">Calendar</a></li>
+						
+					
+				
+					
+						<li class="popupmenu" id="vbmenu_community">
+							<a href="javascript://" class="popupctrl">Community</a>
+							<ul class="popupbody popuphover">
+								
+									<li id="vbclink_members"><a href="memberlist.php">Member List</a></li>
+								
+							</ul>
+						</li>
+					
+				
+					
+						<li class="popupmenu" id="vbmenu_actions">
+							<a href="javascript://" class="popupctrl">Forum Actions</a>
+							<ul class="popupbody popuphover">
+								
+									<li id="vbalink_mfr"><a href="forumdisplay.php?do=markread&amp;markreadhash=guest">Mark Forums Read</a></li>
+								
+							</ul>
+						</li>
+					
+				
+					
+						<li class="popupmenu" id="vbmenu_qlinks">
+							<a href="javascript://" class="popupctrl">Quick Links</a>
+							<ul class="popupbody popuphover">
+								
+									<li id="vbqlink_posts"><a href="search.php?do=getdaily&amp;contenttype=vBForum_Post">Today's Posts</a></li>
+								
+									<li id="vbqlink_leaders"><a href="showgroups.php">View Site Leaders</a></li>
+								
+							</ul>
+						</li>
+					
+				
+			</ul>
+		
+
+		 
+	</ul>
+	
+		<div id="globalsearch" class="globalsearch">
+			<form action="search.php?do=process" method="post" id="navbar_search" class="navbar_search">
+				
+				<input type="hidden" name="securitytoken" value="guest" />
+				<input type="hidden" name="do" value="process" />
+				<span class="textboxcontainer"><span><input type="text" value="" name="query" class="textbox" tabindex="99"/></span></span>
+				<span class="buttoncontainer"><span><input type="image" class="searchbutton" src="images/buttons/search.png" name="submit" onclick="document.getElementById('navbar_search').submit;" tabindex="100"/></span></span>
+			</form>
+			<ul class="navbar_advanced_search">
+				<li><a href="search.php" accesskey="4">Advanced Search</a></li>
+				
+			</ul>
+		</div>
+	
+</div>
+</div><!-- closing div for above_body -->
+
+<div class="body_wrapper">
+<div id="breadcrumb" class="breadcrumb">
+	<ul class="floatcontainer">
+		<li class="navbithome"><a href="index.php" accesskey="1"><img src="images/misc/navbit-home.png" alt="Home" /></a></li>
+		
+	<li class="navbit"><a href="forum.php">Forum</a></li>
+
+	<li class="navbit"><a href="forumdisplay.php?191-Mac-amp-Windows-Software">Mac &amp; Windows Software</a></li>
+
+	<li class="navbit"><a href="forumdisplay.php?168-Windows-Software">Windows Software</a></li>
+
+	<li class="navbit"><a href="forumdisplay.php?426-VIRB-Edit">VIRB Edit</a></li>
+
+		
+	<li class="navbit lastnavbit"><span> VIRB Elite Wireless API</span></li>
+
+	</ul>
+	<hr />
+</div>
+
+
+
+
+
+	<form action="profile.php?do=dismissnotice" method="post" id="notices" class="notices">
+		<input type="hidden" name="do" value="dismissnotice" />
+		<input type="hidden" name="s" value="" />
+		<input type="hidden" name="securitytoken" value="guest" />
+		<input type="hidden" id="dismiss_notice_hidden" name="dismiss_noticeid" value="" />
+		<input type="hidden" name="url" value="" />
+		<ol>
+			<li class="restore" id="navbar_notice_10">
+	
+	Please see <a href="https://forums.garmin.com/showthread.php?323642-Change-Display-Name">this announcement</a> regarding changes to Display Name on the Forums.
+</li><li class="restore" id="navbar_notice_14">
+	
+	Please see the following post for more information to changes to the Forums: <a href="https://www.garmin.com/en-US/blog/aviation/changes-coming-soon-to-garmin-forums/">https://www.garmin.com/en-US/blog/aviation/changes-coming-soon-to-garmin-forums/</a>
+</li>
+		</ol>
+	</form>
+
+
+
+
+
+	<div id="above_postlist" class="above_postlist">
+		
+		<div id="pagination_top" class="pagination_top">
+		
+			<form action="showthread.php?78617-VIRB-Elite-Wireless-API/page5" method="get" class="pagination popupmenu nohovermenu">
+<input type="hidden" name="t" value="78617" />
+	
+		<span><a href="javascript://" class="popupctrl">Page 3 of 5</a></span>
+		
+		<span class="first_last"><a rel="start" href="showthread.php?78617-VIRB-Elite-Wireless-API" title="First Page - Results 1 to 10 of 45"><img src="images/pagination/first-right.png" alt="First" />First</a></span>
+		
+		
+		<span class="prev_next"><a rel="prev" href="showthread.php?78617-VIRB-Elite-Wireless-API/page2" title="Prev Page - Results 11 to 20 of 45"><img src="images/pagination/previous-right.png" alt="Previous" /></a></span>
+		
+		
+		<span><a href="showthread.php?78617-VIRB-Elite-Wireless-API" title="Show results 1 to 10 of 45">1</a></span><span><a href="showthread.php?78617-VIRB-Elite-Wireless-API/page2" title="Show results 11 to 20 of 45">2</a></span><span class="selected"><a href="javascript://" title="Results 21 to 30 of 45">3</a></span><span><a href="showthread.php?78617-VIRB-Elite-Wireless-API/page4" title="Show results 31 to 40 of 45">4</a></span><span><a href="showthread.php?78617-VIRB-Elite-Wireless-API/page5" title="Show results 41 to 45 of 45">5</a></span>
+		
+		
+		<span class="prev_next"><a rel="next" href="showthread.php?78617-VIRB-Elite-Wireless-API/page4" title="Next Page - Results 31 to 40 of 45"><img src="images/pagination/next-right.png" alt="Next" /></a></span>
+		
+		
+		<span class="first_last"><a href="showthread.php?78617-VIRB-Elite-Wireless-API/page5" title="Last Page - Results 41 to 45 of 45">Last<img src="images/pagination/last-right.png" alt="Last" /></a></span>
+		
+	
+	<ul class="popupbody popuphover">
+		<li class="formsubmit jumptopage"><label>Jump to page: <input type="text" name="page" size="4" /></label> <input type="submit" class="button" value="Go" /></li>
+	</ul>
+</form>
+		
+			<div id="postpagestats_above" class="postpagestats">
+				Results 21 to 30 of 45
+			</div>
+		</div>
+	</div>
+	<div id="pagetitle" class="pagetitle">
+		<h1>
+			Thread: <span class="threadtitle"><a href="showthread.php?78617-VIRB-Elite-Wireless-API/page3" title="Reload this Page">VIRB Elite Wireless API</a></span>
+		</h1>
+		
+	</div>
+	<div id="thread_controls" class="thread_controls toolsmenu">
+		<div>
+		<ul id="postlist_popups" class="postlist_popups popupgroup">
+			
+			
+			<li class="popupmenu" id="threadtools">
+				<h6><a class="popupctrl" href="javascript://">Thread Tools</a></h6>
+				<ul class="popupbody popuphover">
+					<li><a href="printthread.php?t=78617&amp;pp=10&amp;page=3" accesskey="3" rel="nofollow">Show Printable Version</a></li>
+					
+					<li>
+						
+							<a href="subscription.php?do=addsubscription&amp;t=78617" rel="nofollow">Subscribe to this Thread&hellip;</a>
+						
+					</li>
+					
+				</ul>
+			</li>
+
+			
+
+			
+				<li class="popupmenu searchthread menusearch" id="searchthread">
+					<h6><a class="popupctrl" href="javascript://">Search Thread</a></h6>
+					<form action="search.php" method="post">
+						<ul class="popupbody popuphover">
+							<li>
+								<input type="text" name="query" class="searchbox" value="Search..." tabindex="13" />
+								<input type="submit" class="button" value="Search" tabindex="14" />
+							</li>
+							<li class="formsubmit" id="popupsearch">
+								<div class="submitoptions">&nbsp;</div>
+								<div class="advancedsearchlink"><a href="search.php?search_type=1&amp;searchthreadid=78617&amp;contenttype=vBForum_Post">Advanced Search</a></div>
+							</li>
+						</ul>
+						<input type="hidden" name="s" value="" />
+						<input type="hidden" name="securitytoken" value="guest" />
+						<input type="hidden" name="do" value="process" />
+						<input type="hidden" name="searchthreadid" value="78617" />
+						<input type="hidden" name="search_type" value="1" />
+						<input type="hidden" name="contenttype" value="vBForum_Post" />
+					</form>
+				</li>
+			
+
+			
+
+			
+				<li class="popupmenu" id="displaymodes">
+					<h6><a class="popupctrl" href="javascript://">Display</a></h6>
+					<ul class="popupbody popuphover">
+						<li><label>Linear Mode</label></li>
+						<li><a href="showthread.php?78617-VIRB-Elite-Wireless-API&amp;mode=hybrid"> Switch to Hybrid Mode</a></li>
+						<li><a href="showthread.php?78617-VIRB-Elite-Wireless-API&amp;p=344345&amp;mode=threaded#post344345"> Switch to Threaded Mode</a></li>
+					</ul>
+				</li>
+			
+
+			
+			</ul>
+		</div>
+	</div>
+
+<div id="postlist" class="postlist restrain">
+	
+
+	
+		<ol id="posts" class="posts" start="1">
+			
+<li class="postbit postbitim postcontainer old" id="post_344345">
+	<div class="postdetails_noavatar">
+		<div class="posthead">
+                        
+                                <span class="postdate old">
+                                        
+                                                <span class="date">08-04-2014,&nbsp;<span class="time">02:21 PM</span></span>
+                                        
+                                </span>
+                                <span class="nodecontrols">
+                                        
+                                                <a name="post344345" href="showthread.php?78617-VIRB-Elite-Wireless-API&amp;p=344345#post344345" class="postcounter">#21</a><a id="postcount344345" name="21"></a>
+                                        
+                                        
+                                        
+                                </span>
+                        
+		</div>
+
+		<div class="userinfo">
+			<div class="contact">
+				
+					<a class="postuseravatarlink" href="member.php?2021-FALAGAR" title="FALAGAR is offline">
+						
+							<img src="image.php?u=2021&amp;dateline=1381270484" alt="FALAGAR's Avatar" />
+						
+					</a>
+				
+				<div class="username_container">
+					
+						<div class="popupmenu memberaction">
+	<a class="username offline popupctrl" href="member.php?2021-FALAGAR" title="FALAGAR is offline"><strong>FALAGAR</strong></a>
+	<ul class="popupbody popuphover memberaction_body">
+		<li class="left">
+			<a href="member.php?2021-FALAGAR" class="siteicon_profile">
+				View Profile
+			</a>
+		</li>
+		
+		<li class="right">
+			<a href="search.php?do=finduser&amp;userid=2021&amp;contenttype=vBForum_Post&amp;showposts=1" class="siteicon_forum" rel="nofollow">
+				View Forum Posts
+			</a>
+		</li>
+		
+		
+		
+		
+		
+		
+		
+		
+
+		
+
+		
+		
+	</ul>
+</div>
+						<img class="inlineimg onlinestatus" src="images/statusicon/user-offline.png" alt="FALAGAR is offline" border="0" />
+
+					
+					<span class="usertitle">
+						Desktop App Developer
+					</span>
+					
+
+                                        
+					
+					
+						<div class="imlinks">
+							    
+						</div>
+					
+				</div>
+			</div>
+			
+				<div class="userinfo_extra">
+					<dl class="userstats">
+						<dt>Join Date</dt> <dd>Aug 2009</dd>
+						<dt>Location</dt> <dd>Arizona</dd>
+						
+						<dt>Posts</dt> <dd>3,595</dd>	
+						
+					</dl>
+					
+					
+				</div>
+			
+		</div>
+	</div>
+
+	<div class="postbody">
+		
+		<div class="postrow">
+		
+		<h2 class="posttitle icon">
+			<img src="images/icons/icon1.png" alt="Default" /> 
+		</h2>
+		
+				
+					
+					
+				
+				
+		<div class="content">
+			<div id="post_message_344345">
+				<blockquote class="postcontent restore">
+					Will do. Thanks for taking the time to write this up.<br />
+<br />
+I will definitely track progress.
+				</blockquote>
+			</div>
+
+			
+
+
+		</div>
+			
+				
+			
+				
+			
+			
+				<blockquote class="signature restore"><div class="signaturecontainer"><a href="http://www.garmin.com/us/support">Garmin Product Support</href> (for questions regarding device issues, and map update questions)</div></blockquote>
+			
+			
+		</div>
+	</div>
+	<div class="postfoot">
+		<div class="textcontrols floatcontainer">
+			<span class="postcontrols">
+				<img style="display:none" id="progress_344345" src="images/misc/progress.gif" alt="" />
+				
+				
+				
+					<a id="qrwq_344345" class="newreply" href="newreply.php?do=newreply&amp;p=344345" rel="nofollow" title="Reply With Quote"><img id="quoteimg_344345" src="clear.gif" alt="Reply With Quote" />  Reply With Quote</a> 
+				
+				
+				
+			</span>
+			<span class="postlinking">
+				
+					
+				
+				
+
+				 
+				
+
+					
+
+					
+					 
+
+					
+					
+					
+					
+					
+			</span>
+		</div>
+	</div>
+	<hr />
+</li>
+
+<li class="postbit postbitim postcontainer old" id="post_387033">
+	<div class="postdetails_noavatar">
+		<div class="posthead">
+                        
+                                <span class="postdate old">
+                                        
+                                                <span class="date">09-11-2014,&nbsp;<span class="time">04:27 AM</span></span>
+                                        
+                                </span>
+                                <span class="nodecontrols">
+                                        
+                                                <a name="post387033" href="showthread.php?78617-VIRB-Elite-Wireless-API&amp;p=387033#post387033" class="postcounter">#22</a><a id="postcount387033" name="22"></a>
+                                        
+                                        
+                                        
+                                </span>
+                        
+		</div>
+
+		<div class="userinfo_noavatar">
+			<div class="contact">
+				
+				<div class="username_container">
+					
+						<div class="popupmenu memberaction">
+	<a class="username offline popupctrl" href="member.php?662512" title=" is offline"><strong></strong></a>
+	<ul class="popupbody popuphover memberaction_body">
+		<li class="left">
+			<a href="member.php?662512" class="siteicon_profile">
+				View Profile
+			</a>
+		</li>
+		
+		<li class="right">
+			<a href="search.php?do=finduser&amp;userid=662512&amp;contenttype=vBForum_Post&amp;showposts=1" class="siteicon_forum" rel="nofollow">
+				View Forum Posts
+			</a>
+		</li>
+		
+		
+		
+		
+		
+		
+		
+		
+
+		
+
+		
+		
+	</ul>
+</div>
+						<img class="inlineimg onlinestatus" src="images/statusicon/user-offline.png" alt=" is offline" border="0" />
+
+					
+					<span class="usertitle">
+						Junior Member
+					</span>
+					
+
+                                        
+					
+					
+						<div class="imlinks">
+							    
+						</div>
+					
+				</div>
+			</div>
+			
+				<div class="userinfo_extra">
+					<dl class="userstats">
+						<dt>Join Date</dt> <dd>Sep 2014</dd>
+						
+						
+						<dt>Posts</dt> <dd>2</dd>	
+						
+					</dl>
+					
+					
+				</div>
+			
+		</div>
+	</div>
+
+	<div class="postbody">
+		
+		<div class="postrow">
+		
+		<h2 class="posttitle icon">
+			<img src="images/icons/icon1.png" alt="Default" /> 
+		</h2>
+		
+				
+				
+		<div class="content">
+			<div id="post_message_387033">
+				<blockquote class="postcontent restore">
+					Hello,<br />
+<br />
+Is there any way to get GPS position via HTTP post ?<br />
+Please send full command description if you can, I would like to include your device into my application.<br />
+<br />
+Best Regards,<br />
+Zsolt Soltesz
+				</blockquote>
+			</div>
+
+			
+
+
+		</div>
+			
+				
+			
+			
+			
+		</div>
+	</div>
+	<div class="postfoot">
+		<div class="textcontrols floatcontainer">
+			<span class="postcontrols">
+				<img style="display:none" id="progress_387033" src="images/misc/progress.gif" alt="" />
+				
+				
+				
+					<a id="qrwq_387033" class="newreply" href="newreply.php?do=newreply&amp;p=387033" rel="nofollow" title="Reply With Quote"><img id="quoteimg_387033" src="clear.gif" alt="Reply With Quote" />  Reply With Quote</a> 
+				
+				
+				
+			</span>
+			<span class="postlinking">
+				
+					
+				
+				
+
+				 
+				
+
+					
+
+					
+					 
+
+					
+					
+					
+					
+					
+			</span>
+		</div>
+	</div>
+	<hr />
+</li>
+
+<li class="postbit postbitim postcontainer old" id="post_387190">
+	<div class="postdetails_noavatar">
+		<div class="posthead">
+                        
+                                <span class="postdate old">
+                                        
+                                                <span class="date">09-11-2014,&nbsp;<span class="time">10:41 AM</span></span>
+                                        
+                                </span>
+                                <span class="nodecontrols">
+                                        
+                                                <a name="post387190" href="showthread.php?78617-VIRB-Elite-Wireless-API&amp;p=387190#post387190" class="postcounter">#23</a><a id="postcount387190" name="23"></a>
+                                        
+                                        
+                                        
+                                </span>
+                        
+		</div>
+
+		<div class="userinfo">
+			<div class="contact">
+				
+					<a class="postuseravatarlink" href="member.php?2021-FALAGAR" title="FALAGAR is offline">
+						
+							<img src="image.php?u=2021&amp;dateline=1381270484" alt="FALAGAR's Avatar" />
+						
+					</a>
+				
+				<div class="username_container">
+					
+						<div class="popupmenu memberaction">
+	<a class="username offline popupctrl" href="member.php?2021-FALAGAR" title="FALAGAR is offline"><strong>FALAGAR</strong></a>
+	<ul class="popupbody popuphover memberaction_body">
+		<li class="left">
+			<a href="member.php?2021-FALAGAR" class="siteicon_profile">
+				View Profile
+			</a>
+		</li>
+		
+		<li class="right">
+			<a href="search.php?do=finduser&amp;userid=2021&amp;contenttype=vBForum_Post&amp;showposts=1" class="siteicon_forum" rel="nofollow">
+				View Forum Posts
+			</a>
+		</li>
+		
+		
+		
+		
+		
+		
+		
+		
+
+		
+
+		
+		
+	</ul>
+</div>
+						<img class="inlineimg onlinestatus" src="images/statusicon/user-offline.png" alt="FALAGAR is offline" border="0" />
+
+					
+					<span class="usertitle">
+						Desktop App Developer
+					</span>
+					
+
+                                        
+					
+					
+						<div class="imlinks">
+							    
+						</div>
+					
+				</div>
+			</div>
+			
+				<div class="userinfo_extra">
+					<dl class="userstats">
+						<dt>Join Date</dt> <dd>Aug 2009</dd>
+						<dt>Location</dt> <dd>Arizona</dd>
+						
+						<dt>Posts</dt> <dd>3,595</dd>	
+						
+					</dl>
+					
+					
+				</div>
+			
+		</div>
+	</div>
+
+	<div class="postbody">
+		
+		<div class="postrow">
+		
+		<h2 class="posttitle icon">
+			<img src="images/icons/icon1.png" alt="Default" /> 
+		</h2>
+		
+				
+				
+		<div class="content">
+			<div id="post_message_387190">
+				<blockquote class="postcontent restore">
+					Yes, you can!<br />
+<br />
+Request:<br />
+<br />
+{&quot;command&quot;:&quot;status&quot;}<br />
+<br />
+<br />
+Response:<br />
+<br />
+{&quot;result&quot;:<br />
+1,&quot;batteryLevel&quot;:&quot;80&quot;,&quot;totalSpace&quot;:5120000,&quot;availableSpace&quot;:4198400,&quot;recordingTimeRemaining&quot;:7200,&quot;g  psAccuracy&quot;:10,<b>&quot;gpsLatitude&quot;:38.856863</b>,<b>&quot;gpsLongitude&quot;:-94.800131</b>,&quot;state&quot;:&quot;idle&quot;,&quot;recordingTime&quot;:&lt;elapsedRecordingTime&gt;,&quot;photoCount&quot;:&lt;photo count&gt;}
+				</blockquote>
+			</div>
+
+			
+
+
+		</div>
+			
+				
+			
+			
+				<blockquote class="signature restore"><div class="signaturecontainer"><a href="http://www.garmin.com/us/support">Garmin Product Support</href> (for questions regarding device issues, and map update questions)</div></blockquote>
+			
+			
+		</div>
+	</div>
+	<div class="postfoot">
+		<div class="textcontrols floatcontainer">
+			<span class="postcontrols">
+				<img style="display:none" id="progress_387190" src="images/misc/progress.gif" alt="" />
+				
+				
+				
+					<a id="qrwq_387190" class="newreply" href="newreply.php?do=newreply&amp;p=387190" rel="nofollow" title="Reply With Quote"><img id="quoteimg_387190" src="clear.gif" alt="Reply With Quote" />  Reply With Quote</a> 
+				
+				
+				
+			</span>
+			<span class="postlinking">
+				
+					
+				
+				
+
+				 
+				
+
+					
+
+					
+					 
+
+					
+					
+					
+					
+					
+			</span>
+		</div>
+	</div>
+	<hr />
+</li>
+
+<li class="postbit postbitim postcontainer old" id="post_387411">
+	<div class="postdetails_noavatar">
+		<div class="posthead">
+                        
+                                <span class="postdate old">
+                                        
+                                                <span class="date">09-12-2014,&nbsp;<span class="time">12:59 AM</span></span>
+                                        
+                                </span>
+                                <span class="nodecontrols">
+                                        
+                                                <a name="post387411" href="showthread.php?78617-VIRB-Elite-Wireless-API&amp;p=387411#post387411" class="postcounter">#24</a><a id="postcount387411" name="24"></a>
+                                        
+                                        
+                                        
+                                </span>
+                        
+		</div>
+
+		<div class="userinfo_noavatar">
+			<div class="contact">
+				
+				<div class="username_container">
+					
+						<div class="popupmenu memberaction">
+	<a class="username offline popupctrl" href="member.php?662512" title=" is offline"><strong></strong></a>
+	<ul class="popupbody popuphover memberaction_body">
+		<li class="left">
+			<a href="member.php?662512" class="siteicon_profile">
+				View Profile
+			</a>
+		</li>
+		
+		<li class="right">
+			<a href="search.php?do=finduser&amp;userid=662512&amp;contenttype=vBForum_Post&amp;showposts=1" class="siteicon_forum" rel="nofollow">
+				View Forum Posts
+			</a>
+		</li>
+		
+		
+		
+		
+		
+		
+		
+		
+
+		
+
+		
+		
+	</ul>
+</div>
+						<img class="inlineimg onlinestatus" src="images/statusicon/user-offline.png" alt=" is offline" border="0" />
+
+					
+					<span class="usertitle">
+						Junior Member
+					</span>
+					
+
+                                        
+					
+					
+						<div class="imlinks">
+							    
+						</div>
+					
+				</div>
+			</div>
+			
+				<div class="userinfo_extra">
+					<dl class="userstats">
+						<dt>Join Date</dt> <dd>Sep 2014</dd>
+						
+						
+						<dt>Posts</dt> <dd>2</dd>	
+						
+					</dl>
+					
+					
+				</div>
+			
+		</div>
+	</div>
+
+	<div class="postbody">
+		
+		<div class="postrow">
+		
+		<h2 class="posttitle icon">
+			<img src="images/icons/icon1.png" alt="Default" /> 
+		</h2>
+		
+				
+				
+		<div class="content">
+			<div id="post_message_387411">
+				<blockquote class="postcontent restore">
+					Thank you so much !
+				</blockquote>
+			</div>
+
+			
+
+
+		</div>
+			
+				
+			
+			
+			
+		</div>
+	</div>
+	<div class="postfoot">
+		<div class="textcontrols floatcontainer">
+			<span class="postcontrols">
+				<img style="display:none" id="progress_387411" src="images/misc/progress.gif" alt="" />
+				
+				
+				
+					<a id="qrwq_387411" class="newreply" href="newreply.php?do=newreply&amp;p=387411" rel="nofollow" title="Reply With Quote"><img id="quoteimg_387411" src="clear.gif" alt="Reply With Quote" />  Reply With Quote</a> 
+				
+				
+				
+			</span>
+			<span class="postlinking">
+				
+					
+				
+				
+
+				 
+				
+
+					
+
+					
+					 
+
+					
+					
+					
+					
+					
+			</span>
+		</div>
+	</div>
+	<hr />
+</li>
+
+<li class="postbit postbitim postcontainer old" id="post_395751">
+	<div class="postdetails_noavatar">
+		<div class="posthead">
+                        
+                                <span class="postdate old">
+                                        
+                                                <span class="date">09-24-2014,&nbsp;<span class="time">11:43 AM</span></span>
+                                        
+                                </span>
+                                <span class="nodecontrols">
+                                        
+                                                <a name="post395751" href="showthread.php?78617-VIRB-Elite-Wireless-API&amp;p=395751#post395751" class="postcounter">#25</a><a id="postcount395751" name="25"></a>
+                                        
+                                        
+                                        
+                                </span>
+                        
+		</div>
+
+		<div class="userinfo_noavatar">
+			<div class="contact">
+				
+				<div class="username_container">
+					
+						<div class="popupmenu memberaction">
+	<a class="username offline popupctrl" href="member.php?670865-RussBlack" title="RussBlack is offline"><strong>RussBlack</strong></a>
+	<ul class="popupbody popuphover memberaction_body">
+		<li class="left">
+			<a href="member.php?670865-RussBlack" class="siteicon_profile">
+				View Profile
+			</a>
+		</li>
+		
+		<li class="right">
+			<a href="search.php?do=finduser&amp;userid=670865&amp;contenttype=vBForum_Post&amp;showposts=1" class="siteicon_forum" rel="nofollow">
+				View Forum Posts
+			</a>
+		</li>
+		
+		
+		
+		
+		
+		
+		
+		
+
+		
+
+		
+		
+	</ul>
+</div>
+						<img class="inlineimg onlinestatus" src="images/statusicon/user-offline.png" alt="RussBlack is offline" border="0" />
+
+					
+					<span class="usertitle">
+						Junior Member
+					</span>
+					
+
+                                        
+					
+					
+						<div class="imlinks">
+							    
+						</div>
+					
+				</div>
+			</div>
+			
+				<div class="userinfo_extra">
+					<dl class="userstats">
+						<dt>Join Date</dt> <dd>Sep 2014</dd>
+						
+						
+						<dt>Posts</dt> <dd>4</dd>	
+						
+					</dl>
+					
+					
+				</div>
+			
+		</div>
+	</div>
+
+	<div class="postbody">
+		
+		<div class="postrow">
+		
+		<h2 class="posttitle icon">
+			<img src="images/icons/icon1.png" alt="Default" /> 
+		</h2>
+		
+				
+				
+		<div class="content">
+			<div id="post_message_395751">
+				<blockquote class="postcontent restore">
+					A few Questions:<br />
+1) is there a POST request to initiate a still photograph<br />
+2) is there a mechanism (maybe ftp) for downloading Videos or Photos that are on the Virb unit<br />
+3) have you noticed the Photo count entry of the status seems to always be 0 (have taken pictures using buttons on Virb)<br />
+<br />
+thanks
+				</blockquote>
+			</div>
+
+			
+
+
+		</div>
+			
+				
+			
+			
+			
+		</div>
+	</div>
+	<div class="postfoot">
+		<div class="textcontrols floatcontainer">
+			<span class="postcontrols">
+				<img style="display:none" id="progress_395751" src="images/misc/progress.gif" alt="" />
+				
+				
+				
+					<a id="qrwq_395751" class="newreply" href="newreply.php?do=newreply&amp;p=395751" rel="nofollow" title="Reply With Quote"><img id="quoteimg_395751" src="clear.gif" alt="Reply With Quote" />  Reply With Quote</a> 
+				
+				
+				
+			</span>
+			<span class="postlinking">
+				
+					
+				
+				
+
+				 
+				
+
+					
+
+					
+					 
+
+					
+					
+					
+					
+					
+			</span>
+		</div>
+	</div>
+	<hr />
+</li>
+
+<li class="postbit postbitim postcontainer old" id="post_395824">
+	<div class="postdetails_noavatar">
+		<div class="posthead">
+                        
+                                <span class="postdate old">
+                                        
+                                                <span class="date">09-24-2014,&nbsp;<span class="time">02:42 PM</span></span>
+                                        
+                                </span>
+                                <span class="nodecontrols">
+                                        
+                                                <a name="post395824" href="showthread.php?78617-VIRB-Elite-Wireless-API&amp;p=395824#post395824" class="postcounter">#26</a><a id="postcount395824" name="26"></a>
+                                        
+                                        
+                                        
+                                </span>
+                        
+		</div>
+
+		<div class="userinfo">
+			<div class="contact">
+				
+					<a class="postuseravatarlink" href="member.php?2021-FALAGAR" title="FALAGAR is offline">
+						
+							<img src="image.php?u=2021&amp;dateline=1381270484" alt="FALAGAR's Avatar" />
+						
+					</a>
+				
+				<div class="username_container">
+					
+						<div class="popupmenu memberaction">
+	<a class="username offline popupctrl" href="member.php?2021-FALAGAR" title="FALAGAR is offline"><strong>FALAGAR</strong></a>
+	<ul class="popupbody popuphover memberaction_body">
+		<li class="left">
+			<a href="member.php?2021-FALAGAR" class="siteicon_profile">
+				View Profile
+			</a>
+		</li>
+		
+		<li class="right">
+			<a href="search.php?do=finduser&amp;userid=2021&amp;contenttype=vBForum_Post&amp;showposts=1" class="siteicon_forum" rel="nofollow">
+				View Forum Posts
+			</a>
+		</li>
+		
+		
+		
+		
+		
+		
+		
+		
+
+		
+
+		
+		
+	</ul>
+</div>
+						<img class="inlineimg onlinestatus" src="images/statusicon/user-offline.png" alt="FALAGAR is offline" border="0" />
+
+					
+					<span class="usertitle">
+						Desktop App Developer
+					</span>
+					
+
+                                        
+					
+					
+						<div class="imlinks">
+							    
+						</div>
+					
+				</div>
+			</div>
+			
+				<div class="userinfo_extra">
+					<dl class="userstats">
+						<dt>Join Date</dt> <dd>Aug 2009</dd>
+						<dt>Location</dt> <dd>Arizona</dd>
+						
+						<dt>Posts</dt> <dd>3,595</dd>	
+						
+					</dl>
+					
+					
+				</div>
+			
+		</div>
+	</div>
+
+	<div class="postbody">
+		
+		<div class="postrow">
+		
+		<h2 class="posttitle icon">
+			<img src="images/icons/icon1.png" alt="Default" /> 
+		</h2>
+		
+				
+				
+		<div class="content">
+			<div id="post_message_395824">
+				<blockquote class="postcontent restore">
+					1) Yes<br />
+<br />
+{<br />
+	&quot;command&quot;: &quot;snapPicture&quot;,<br />
+	&quot;selfTimer&quot;: 0<br />
+}<br />
+<br />
+2) Not currently, sorry.<br />
+<br />
+3) I don't believe that field is currently properly populated.
+				</blockquote>
+			</div>
+
+			
+
+
+		</div>
+			
+				
+			
+			
+				<blockquote class="signature restore"><div class="signaturecontainer"><a href="http://www.garmin.com/us/support">Garmin Product Support</href> (for questions regarding device issues, and map update questions)</div></blockquote>
+			
+			
+		</div>
+	</div>
+	<div class="postfoot">
+		<div class="textcontrols floatcontainer">
+			<span class="postcontrols">
+				<img style="display:none" id="progress_395824" src="images/misc/progress.gif" alt="" />
+				
+				
+				
+					<a id="qrwq_395824" class="newreply" href="newreply.php?do=newreply&amp;p=395824" rel="nofollow" title="Reply With Quote"><img id="quoteimg_395824" src="clear.gif" alt="Reply With Quote" />  Reply With Quote</a> 
+				
+				
+				
+			</span>
+			<span class="postlinking">
+				
+					
+				
+				
+
+				 
+				
+
+					
+
+					
+					 
+
+					
+					
+					
+					
+					
+			</span>
+		</div>
+	</div>
+	<hr />
+</li>
+
+<li class="postbit postbitim postcontainer old" id="post_396080">
+	<div class="postdetails_noavatar">
+		<div class="posthead">
+                        
+                                <span class="postdate old">
+                                        
+                                                <span class="date">09-25-2014,&nbsp;<span class="time">02:03 AM</span></span>
+                                        
+                                </span>
+                                <span class="nodecontrols">
+                                        
+                                                <a name="post396080" href="showthread.php?78617-VIRB-Elite-Wireless-API&amp;p=396080#post396080" class="postcounter">#27</a><a id="postcount396080" name="27"></a>
+                                        
+                                        
+                                        
+                                </span>
+                        
+		</div>
+
+		<div class="userinfo_noavatar">
+			<div class="contact">
+				
+				<div class="username_container">
+					
+						<div class="popupmenu memberaction">
+	<a class="username offline popupctrl" href="member.php?670865-RussBlack" title="RussBlack is offline"><strong>RussBlack</strong></a>
+	<ul class="popupbody popuphover memberaction_body">
+		<li class="left">
+			<a href="member.php?670865-RussBlack" class="siteicon_profile">
+				View Profile
+			</a>
+		</li>
+		
+		<li class="right">
+			<a href="search.php?do=finduser&amp;userid=670865&amp;contenttype=vBForum_Post&amp;showposts=1" class="siteicon_forum" rel="nofollow">
+				View Forum Posts
+			</a>
+		</li>
+		
+		
+		
+		
+		
+		
+		
+		
+
+		
+
+		
+		
+	</ul>
+</div>
+						<img class="inlineimg onlinestatus" src="images/statusicon/user-offline.png" alt="RussBlack is offline" border="0" />
+
+					
+					<span class="usertitle">
+						Junior Member
+					</span>
+					
+
+                                        
+					
+					
+						<div class="imlinks">
+							    
+						</div>
+					
+				</div>
+			</div>
+			
+				<div class="userinfo_extra">
+					<dl class="userstats">
+						<dt>Join Date</dt> <dd>Sep 2014</dd>
+						
+						
+						<dt>Posts</dt> <dd>4</dd>	
+						
+					</dl>
+					
+					
+				</div>
+			
+		</div>
+	</div>
+
+	<div class="postbody">
+		
+		<div class="postrow">
+		
+		<h2 class="posttitle icon">
+			<img src="images/icons/icon1.png" alt="Default" /> 
+		</h2>
+		
+				
+				
+		<div class="content">
+			<div id="post_message_396080">
+				<blockquote class="postcontent restore">
+					Many thanks for the quick response.<br />
+It would be really good to be able to download recorded movies wirelessly.<br />
+I was expecting that was the main reason for the WIFI.  As then I could download recorded movies to my phone whilst out.<br />
+<br />
+But the Wireless api to control &amp; configure it is good, very useful.<br />
+I've got a Windows phone app working, though currently without the preview option.<br />
+<br />
+<a href="https://forums.garmin.com/attachment.php?attachmentid=21269&amp;d=1411632164"  title="Name:  wp_ss_20140924_0006.png
+Views: 22
+Size:  79.6 KB">wp_ss_20140924_0006.png</a><a href="https://forums.garmin.com/attachment.php?attachmentid=21270&amp;d=1411632165"  title="Name:  wp_ss_20140924_0007.png
+Views: 18
+Size:  83.6 KB">wp_ss_20140924_0007.png</a><a href="https://forums.garmin.com/attachment.php?attachmentid=21271&amp;d=1411632167"  title="Name:  wp_ss_20140924_0009.png
+Views: 24
+Size:  123.3 KB">wp_ss_20140924_0009.png</a><a href="https://forums.garmin.com/attachment.php?attachmentid=21272&amp;d=1411632168"  title="Name:  wp_ss_20140925_0002.png
+Views: 22
+Size:  97.1 KB">wp_ss_20140925_0002.png</a>
+				</blockquote>
+			</div>
+
+			
+
+
+		</div>
+			
+				
+			
+			
+			
+		</div>
+	</div>
+	<div class="postfoot">
+		<div class="textcontrols floatcontainer">
+			<span class="postcontrols">
+				<img style="display:none" id="progress_396080" src="images/misc/progress.gif" alt="" />
+				
+				
+				
+					<a id="qrwq_396080" class="newreply" href="newreply.php?do=newreply&amp;p=396080" rel="nofollow" title="Reply With Quote"><img id="quoteimg_396080" src="clear.gif" alt="Reply With Quote" />  Reply With Quote</a> 
+				
+				
+				
+			</span>
+			<span class="postlinking">
+				
+					
+				
+				
+
+				 
+				
+
+					
+
+					
+					 
+
+					
+					
+					
+					
+					
+			</span>
+		</div>
+	</div>
+	<hr />
+</li>
+
+<li class="postbit postbitim postcontainer old" id="post_396429">
+	<div class="postdetails_noavatar">
+		<div class="posthead">
+                        
+                                <span class="postdate old">
+                                        
+                                                <span class="date">09-25-2014,&nbsp;<span class="time">12:27 PM</span></span>
+                                        
+                                </span>
+                                <span class="nodecontrols">
+                                        
+                                                <a name="post396429" href="showthread.php?78617-VIRB-Elite-Wireless-API&amp;p=396429#post396429" class="postcounter">#28</a><a id="postcount396429" name="28"></a>
+                                        
+                                        
+                                        
+                                </span>
+                        
+		</div>
+
+		<div class="userinfo_noavatar">
+			<div class="contact">
+				
+				<div class="username_container">
+					
+						<div class="popupmenu memberaction">
+	<a class="username offline popupctrl" href="member.php?670865-RussBlack" title="RussBlack is offline"><strong>RussBlack</strong></a>
+	<ul class="popupbody popuphover memberaction_body">
+		<li class="left">
+			<a href="member.php?670865-RussBlack" class="siteicon_profile">
+				View Profile
+			</a>
+		</li>
+		
+		<li class="right">
+			<a href="search.php?do=finduser&amp;userid=670865&amp;contenttype=vBForum_Post&amp;showposts=1" class="siteicon_forum" rel="nofollow">
+				View Forum Posts
+			</a>
+		</li>
+		
+		
+		
+		
+		
+		
+		
+		
+
+		
+
+		
+		
+	</ul>
+</div>
+						<img class="inlineimg onlinestatus" src="images/statusicon/user-offline.png" alt="RussBlack is offline" border="0" />
+
+					
+					<span class="usertitle">
+						Junior Member
+					</span>
+					
+
+                                        
+					
+					
+						<div class="imlinks">
+							    
+						</div>
+					
+				</div>
+			</div>
+			
+				<div class="userinfo_extra">
+					<dl class="userstats">
+						<dt>Join Date</dt> <dd>Sep 2014</dd>
+						
+						
+						<dt>Posts</dt> <dd>4</dd>	
+						
+					</dl>
+					
+					
+				</div>
+			
+		</div>
+	</div>
+
+	<div class="postbody">
+		
+		<div class="postrow">
+		
+		<h2 class="posttitle icon">
+			<img src="images/icons/icon1.png" alt="Default" /> 
+		</h2>
+		
+				
+				
+		<div class="content">
+			<div id="post_message_396429">
+				<blockquote class="postcontent restore">
+					Routing around things i found another command {&quot;command&quot;:&quot;mediaList&quot;} <br />
+Can you advise what this does or if its not implemented yet?<br />
+<br />
+thanks again.
+				</blockquote>
+			</div>
+
+			
+
+
+		</div>
+			
+				
+			
+			
+			
+		</div>
+	</div>
+	<div class="postfoot">
+		<div class="textcontrols floatcontainer">
+			<span class="postcontrols">
+				<img style="display:none" id="progress_396429" src="images/misc/progress.gif" alt="" />
+				
+				
+				
+					<a id="qrwq_396429" class="newreply" href="newreply.php?do=newreply&amp;p=396429" rel="nofollow" title="Reply With Quote"><img id="quoteimg_396429" src="clear.gif" alt="Reply With Quote" />  Reply With Quote</a> 
+				
+				
+				
+			</span>
+			<span class="postlinking">
+				
+					
+				
+				
+
+				 
+				
+
+					
+
+					
+					 
+
+					
+					
+					
+					
+					
+			</span>
+		</div>
+	</div>
+	<hr />
+</li>
+
+<li class="postbit postbitim postcontainer old" id="post_397192">
+	<div class="postdetails_noavatar">
+		<div class="posthead">
+                        
+                                <span class="postdate old">
+                                        
+                                                <span class="date">09-26-2014,&nbsp;<span class="time">06:03 PM</span></span>
+                                        
+                                </span>
+                                <span class="nodecontrols">
+                                        
+                                                <a name="post397192" href="showthread.php?78617-VIRB-Elite-Wireless-API&amp;p=397192#post397192" class="postcounter">#29</a><a id="postcount397192" name="29"></a>
+                                        
+                                        
+                                        
+                                </span>
+                        
+		</div>
+
+		<div class="userinfo">
+			<div class="contact">
+				
+					<a class="postuseravatarlink" href="member.php?2021-FALAGAR" title="FALAGAR is offline">
+						
+							<img src="image.php?u=2021&amp;dateline=1381270484" alt="FALAGAR's Avatar" />
+						
+					</a>
+				
+				<div class="username_container">
+					
+						<div class="popupmenu memberaction">
+	<a class="username offline popupctrl" href="member.php?2021-FALAGAR" title="FALAGAR is offline"><strong>FALAGAR</strong></a>
+	<ul class="popupbody popuphover memberaction_body">
+		<li class="left">
+			<a href="member.php?2021-FALAGAR" class="siteicon_profile">
+				View Profile
+			</a>
+		</li>
+		
+		<li class="right">
+			<a href="search.php?do=finduser&amp;userid=2021&amp;contenttype=vBForum_Post&amp;showposts=1" class="siteicon_forum" rel="nofollow">
+				View Forum Posts
+			</a>
+		</li>
+		
+		
+		
+		
+		
+		
+		
+		
+
+		
+
+		
+		
+	</ul>
+</div>
+						<img class="inlineimg onlinestatus" src="images/statusicon/user-offline.png" alt="FALAGAR is offline" border="0" />
+
+					
+					<span class="usertitle">
+						Desktop App Developer
+					</span>
+					
+
+                                        
+					
+					
+						<div class="imlinks">
+							    
+						</div>
+					
+				</div>
+			</div>
+			
+				<div class="userinfo_extra">
+					<dl class="userstats">
+						<dt>Join Date</dt> <dd>Aug 2009</dd>
+						<dt>Location</dt> <dd>Arizona</dd>
+						
+						<dt>Posts</dt> <dd>3,595</dd>	
+						
+					</dl>
+					
+					
+				</div>
+			
+		</div>
+	</div>
+
+	<div class="postbody">
+		
+		<div class="postrow">
+		
+		<h2 class="posttitle icon">
+			<img src="images/icons/icon1.png" alt="Default" /> 
+		</h2>
+		
+				
+				
+		<div class="content">
+			<div id="post_message_397192">
+				<blockquote class="postcontent restore">
+					That is not implemented yet, unfortunately.<br />
+<br />
+Very cool app! The preview part is the tricky one. <img src="images/smilies/smile.png" border="0" alt="" title="Smile" class="inlineimg" />
+				</blockquote>
+			</div>
+
+			
+
+
+		</div>
+			
+				
+			
+			
+				<blockquote class="signature restore"><div class="signaturecontainer"><a href="http://www.garmin.com/us/support">Garmin Product Support</href> (for questions regarding device issues, and map update questions)</div></blockquote>
+			
+			
+		</div>
+	</div>
+	<div class="postfoot">
+		<div class="textcontrols floatcontainer">
+			<span class="postcontrols">
+				<img style="display:none" id="progress_397192" src="images/misc/progress.gif" alt="" />
+				
+				
+				
+					<a id="qrwq_397192" class="newreply" href="newreply.php?do=newreply&amp;p=397192" rel="nofollow" title="Reply With Quote"><img id="quoteimg_397192" src="clear.gif" alt="Reply With Quote" />  Reply With Quote</a> 
+				
+				
+				
+			</span>
+			<span class="postlinking">
+				
+					
+				
+				
+
+				 
+				
+
+					
+
+					
+					 
+
+					
+					
+					
+					
+					
+			</span>
+		</div>
+	</div>
+	<hr />
+</li>
+
+<li class="postbit postbitim postcontainer old" id="post_398281">
+	<div class="postdetails_noavatar">
+		<div class="posthead">
+                        
+                                <span class="postdate old">
+                                        
+                                                <span class="date">09-28-2014,&nbsp;<span class="time">03:05 AM</span></span>
+                                        
+                                </span>
+                                <span class="nodecontrols">
+                                        
+                                                <a name="post398281" href="showthread.php?78617-VIRB-Elite-Wireless-API&amp;p=398281#post398281" class="postcounter">#30</a><a id="postcount398281" name="30"></a>
+                                        
+                                        
+                                        
+                                </span>
+                        
+		</div>
+
+		<div class="userinfo_noavatar">
+			<div class="contact">
+				
+				<div class="username_container">
+					
+						<div class="popupmenu memberaction">
+	<a class="username offline popupctrl" href="member.php?4262-INDYRUNNER" title="INDYRUNNER is offline"><strong>INDYRUNNER</strong></a>
+	<ul class="popupbody popuphover memberaction_body">
+		<li class="left">
+			<a href="member.php?4262-INDYRUNNER" class="siteicon_profile">
+				View Profile
+			</a>
+		</li>
+		
+		<li class="right">
+			<a href="search.php?do=finduser&amp;userid=4262&amp;contenttype=vBForum_Post&amp;showposts=1" class="siteicon_forum" rel="nofollow">
+				View Forum Posts
+			</a>
+		</li>
+		
+		
+		
+		
+		
+		
+		
+		
+
+		
+
+		
+		
+	</ul>
+</div>
+						<img class="inlineimg onlinestatus" src="images/statusicon/user-offline.png" alt="INDYRUNNER is offline" border="0" />
+
+					
+					<span class="usertitle">
+						Senior Member
+					</span>
+					
+
+                                        
+					
+					
+						<div class="imlinks">
+							    
+						</div>
+					
+				</div>
+			</div>
+			
+				<div class="userinfo_extra">
+					<dl class="userstats">
+						<dt>Join Date</dt> <dd>Sep 2009</dd>
+						<dt>Location</dt> <dd>london</dd>
+						
+						<dt>Posts</dt> <dd>163</dd>	
+						
+					</dl>
+					
+					
+				</div>
+			
+		</div>
+	</div>
+
+	<div class="postbody">
+		
+		<div class="postrow">
+		
+		<h2 class="posttitle icon">
+			<img src="images/icons/icon1.png" alt="Default" /> 
+		</h2>
+		
+				
+				
+					
+				
+		<div class="content">
+			<div id="post_message_398281">
+				<blockquote class="postcontent restore">
+					Hey,<br />
+Was wondering..... Why is there no feature to use say a Nexus 7 tablet as viewer for footage already recorded? Am I really ment to take my 17&quot; MBP on a 3 week hike just so I can view Virb Elite footage????? Also why can I not offload footage via WIFI to say a Nexus 7???<br />
+<br />
+Virb is fine but in practice its a pig to use.
+				</blockquote>
+			</div>
+
+			
+
+
+		</div>
+			
+				
+			
+			
+			
+		</div>
+	</div>
+	<div class="postfoot">
+		<div class="textcontrols floatcontainer">
+			<span class="postcontrols">
+				<img style="display:none" id="progress_398281" src="images/misc/progress.gif" alt="" />
+				
+				
+				
+					<a id="qrwq_398281" class="newreply" href="newreply.php?do=newreply&amp;p=398281" rel="nofollow" title="Reply With Quote"><img id="quoteimg_398281" src="clear.gif" alt="Reply With Quote" />  Reply With Quote</a> 
+				
+				
+				
+			</span>
+			<span class="postlinking">
+				
+					
+				
+				
+
+				 
+				
+
+					
+
+					
+					 
+
+					
+					
+					
+					
+					
+			</span>
+		</div>
+	</div>
+	<hr />
+</li>
+
+		</ol>
+		<div class="separator"></div>
+		<div class="postlistfoot">
+			
+		</div>
+
+	
+
+</div>
+
+<div id="below_postlist" class="noinlinemod below_postlist">
+	
+	<div id="pagination_bottom" class="pagination_bottom">
+	
+		<form action="showthread.php?78617-VIRB-Elite-Wireless-API/page5" method="get" class="pagination popupmenu nohovermenu">
+<input type="hidden" name="t" value="78617" />
+	
+		<span><a href="javascript://" class="popupctrl">Page 3 of 5</a></span>
+		
+		<span class="first_last"><a rel="start" href="showthread.php?78617-VIRB-Elite-Wireless-API" title="First Page - Results 1 to 10 of 45"><img src="images/pagination/first-right.png" alt="First" />First</a></span>
+		
+		
+		<span class="prev_next"><a rel="prev" href="showthread.php?78617-VIRB-Elite-Wireless-API/page2" title="Prev Page - Results 11 to 20 of 45"><img src="images/pagination/previous-right.png" alt="Previous" /></a></span>
+		
+		
+		<span><a href="showthread.php?78617-VIRB-Elite-Wireless-API" title="Show results 1 to 10 of 45">1</a></span><span><a href="showthread.php?78617-VIRB-Elite-Wireless-API/page2" title="Show results 11 to 20 of 45">2</a></span><span class="selected"><a href="javascript://" title="Results 21 to 30 of 45">3</a></span><span><a href="showthread.php?78617-VIRB-Elite-Wireless-API/page4" title="Show results 31 to 40 of 45">4</a></span><span><a href="showthread.php?78617-VIRB-Elite-Wireless-API/page5" title="Show results 41 to 45 of 45">5</a></span>
+		
+		
+		<span class="prev_next"><a rel="next" href="showthread.php?78617-VIRB-Elite-Wireless-API/page4" title="Next Page - Results 31 to 40 of 45"><img src="images/pagination/next-right.png" alt="Next" /></a></span>
+		
+		
+		<span class="first_last"><a href="showthread.php?78617-VIRB-Elite-Wireless-API/page5" title="Last Page - Results 41 to 45 of 45">Last<img src="images/pagination/last-right.png" alt="Last" /></a></span>
+		
+	
+	<ul class="popupbody popuphover">
+		<li class="formsubmit jumptopage"><label>Jump to page: <input type="text" name="page" size="4" /></label> <input type="submit" class="button" value="Go" /></li>
+	</ul>
+</form>
+	
+		<div class="clear"></div>
+<div class="navpopupmenu popupmenu nohovermenu" id="showthread_navpopup">
+	
+		<span class="shade">Quick Navigation</span>
+		<a href="showthread.php?78617-VIRB-Elite-Wireless-API" class="popupctrl"><span class="ctrlcontainer">VIRB Edit</span></a>
+		<a href="showthread.php?78617-VIRB-Elite-Wireless-API/page3#top" class="textcontrol" onclick="document.location.hash='top';return false;">Top</a>
+	
+	<ul class="navpopupbody popupbody popuphover">
+		
+		<li class="optionlabel">Site Areas</li>
+		<li><a href="usercp.php">Settings</a></li>
+		<li><a href="private.php">Private Messages</a></li>
+		<li><a href="subscription.php">Subscriptions</a></li>
+		<li><a href="online.php">Who's Online</a></li>
+		<li><a href="search.php">Search Forums</a></li>
+		<li><a href="forum.php">Forums Home</a></li>
+		
+			<li class="optionlabel">Forums</li>
+			
+		
+			
+				<li><a href="forumdisplay.php?7-Into-Sports">Into Sports</a>
+					<ol class="d1">
+						
+		
+			
+				<li><a href="forumdisplay.php?30-Garmin-Connect">Garmin Connect</a>
+					<ol class="d2">
+						
+		
+			
+				<li><a href="forumdisplay.php?42-FAQ">FAQ</a></li>
+			
+		
+			
+					</ol>
+				</li>
+			
+		
+			
+				<li><a href="forumdisplay.php?444-Garmin-Connect-Mobile-Application">Garmin Connect Mobile Application</a>
+					<ol class="d2">
+						
+		
+			
+				<li><a href="forumdisplay.php?446-Garmin-Connect-Mobile-Android">Garmin Connect Mobile - Android</a></li>
+			
+		
+			
+				<li><a href="forumdisplay.php?445-Garmin-Connect-Mobile-iOS">Garmin Connect Mobile - iOS</a></li>
+			
+		
+			
+				<li><a href="forumdisplay.php?582-Garmin-Connect-Mobile-Windows">Garmin Connect Mobile - Windows</a></li>
+			
+		
+			
+					</ol>
+				</li>
+			
+		
+			
+				<li><a href="forumdisplay.php?458-Health-amp-Fitness">Health &amp; Fitness</a>
+					<ol class="d2">
+						
+		
+			
+				<li><a href="forumdisplay.php?590-vivomove">vivomove</a></li>
+			
+		
+			
+				<li><a href="forumdisplay.php?491-vivoactive">vivoactive</a></li>
+			
+		
+			
+				<li><a href="forumdisplay.php?584-vivoactive-HR">vivoactive HR</a></li>
+			
+		
+			
+				<li><a href="forumdisplay.php?556-vivosmart-HR-HR">vivosmart HR/HR+</a></li>
+			
+		
+			
+				<li><a href="forumdisplay.php?478-vivosmart">vivosmart</a></li>
+			
+		
+			
+				<li><a href="forumdisplay.php?557-Index-Smart-Scale">Index Smart Scale</a></li>
+			
+		
+			
+				<li><a href="forumdisplay.php?583-vivofit-3">vivofit 3</a></li>
+			
+		
+			
+				<li><a href="forumdisplay.php?490-vivofit-2">vivofit 2</a></li>
+			
+		
+			
+				<li><a href="forumdisplay.php?459-vivofit">vivofit</a></li>
+			
+		
+			
+					</ol>
+				</li>
+			
+		
+			
+				<li><a href="forumdisplay.php?18-Running">Running</a>
+					<ol class="d2">
+						
+		
+			
+				<li><a href="forumdisplay.php?586-Forerunner-735XT">Forerunner 735XT</a></li>
+			
+		
+			
+				<li><a href="forumdisplay.php?555-Forerunner-630">Forerunner 630</a></li>
+			
+		
+			
+				<li><a href="forumdisplay.php?553-Forerunner-235">Forerunner 235</a></li>
+			
+		
+			
+				<li><a href="forumdisplay.php?554-Forerunner-230">Forerunner 230</a></li>
+			
+		
+			
+				<li><a href="forumdisplay.php?521-Forerunner-225">Forerunner 225</a></li>
+			
+		
+			
+				<li><a href="forumdisplay.php?480-Forerunner-920XT">Forerunner 920XT</a></li>
+			
+		
+			
+				<li><a href="forumdisplay.php?428-Forerunner-620">Forerunner 620</a></li>
+			
+		
+			
+				<li><a href="forumdisplay.php?427-Forerunner-220">Forerunner 220</a></li>
+			
+		
+			
+				<li><a href="forumdisplay.php?544-Forerunner-25">Forerunner 25</a></li>
+			
+		
+			
+				<li><a href="forumdisplay.php?470-Forerunner-15">Forerunner 15</a></li>
+			
+		
+			
+				<li><a href="forumdisplay.php?549-Archive">Archive</a>
+					<ol class="d3">
+						
+		
+			
+				<li><a href="forumdisplay.php?551-Archived-Forums">Archived Forums</a>
+					<ol class="d4">
+						
+		
+			
+				<li><a href="forumdisplay.php?305-Forerunner-910XT">Forerunner 910XT</a></li>
+			
+		
+			
+				<li><a href="forumdisplay.php?346-Forerunner-10">Forerunner 10</a></li>
+			
+		
+			
+				<li><a href="forumdisplay.php?282-Forerunner-610">Forerunner 610</a></li>
+			
+		
+			
+					</ol>
+				</li>
+			
+		
+			
+					</ol>
+				</li>
+			
+		
+			
+					</ol>
+				</li>
+			
+		
+			
+				<li><a href="forumdisplay.php?20-Cycling">Cycling</a>
+					<ol class="d2">
+						
+		
+			
+				<li><a href="forumdisplay.php?534-Edge-520">Edge 520</a></li>
+			
+		
+			
+				<li><a href="forumdisplay.php?552-Edge-Explore-1000">Edge Explore 1000</a></li>
+			
+		
+			
+				<li><a href="forumdisplay.php?533-Varia">Varia</a></li>
+			
+		
+			
+				<li><a href="forumdisplay.php?532-Edge-20-25">Edge 20/25</a></li>
+			
+		
+			
+				<li><a href="forumdisplay.php?424-Vector">Vector</a></li>
+			
+		
+			
+				<li><a href="forumdisplay.php?463-Speed-Cadence-Sensor">Speed/Cadence Sensor</a></li>
+			
+		
+			
+				<li><a href="forumdisplay.php?464-Edge-1000">Edge 1000</a></li>
+			
+		
+			
+				<li><a href="forumdisplay.php?448-Edge-Touring">Edge Touring</a></li>
+			
+		
+			
+				<li><a href="forumdisplay.php?362-Edge-810">Edge 810</a></li>
+			
+		
+			
+				<li><a href="forumdisplay.php?363-Edge-510">Edge 510</a></li>
+			
+		
+			
+					</ol>
+				</li>
+			
+		
+			
+				<li><a href="forumdisplay.php?317-Swimming">Swimming</a>
+					<ol class="d2">
+						
+		
+			
+				<li><a href="forumdisplay.php?318-Garmin-Swim">Garmin Swim</a></li>
+			
+		
+			
+					</ol>
+				</li>
+			
+		
+			
+				<li><a href="forumdisplay.php?587-Golfing">Golfing</a>
+					<ol class="d2">
+						
+		
+			
+				<li><a href="forumdisplay.php?588-Approach-S20">Approach S20</a></li>
+			
+		
+			
+				<li><a href="forumdisplay.php?589-Approach-X40">Approach X40</a></li>
+			
+		
+			
+					</ol>
+				</li>
+			
+		
+			
+					</ol>
+				</li>
+			
+		
+			
+				<li><a href="forumdisplay.php?465-On-the-Trail">On the Trail</a>
+					<ol class="d1">
+						
+		
+			
+				<li><a href="forumdisplay.php?466-Wrist-worn">Wrist-worn</a>
+					<ol class="d2">
+						
+		
+			
+				<li><a href="forumdisplay.php?493-epix">epix</a></li>
+			
+		
+			
+				<li><a href="forumdisplay.php?492-fenix-3">fenix 3</a></li>
+			
+		
+			
+				<li><a href="forumdisplay.php?585-fenix-3-HR">fenix 3 HR</a></li>
+			
+		
+			
+				<li><a href="forumdisplay.php?468-fenix-2">fenix 2</a></li>
+			
+		
+			
+				<li><a href="forumdisplay.php?467-fenix">fenix</a></li>
+			
+		
+			
+				<li><a href="forumdisplay.php?469-tactix">tactix</a></li>
+			
+		
+			
+					</ol>
+				</li>
+			
+		
+			
+				<li><a href="forumdisplay.php?481-Action-Camera">Action Camera</a>
+					<ol class="d2">
+						
+		
+			
+				<li><a href="forumdisplay.php?482-VIRB">VIRB</a></li>
+			
+		
+			
+				<li><a href="forumdisplay.php?487-VIRB-Mobile-App">VIRB Mobile App</a></li>
+			
+		
+			
+				<li><a href="forumdisplay.php?488-VIRB-Edit-(Windows)">VIRB Edit (Windows)</a></li>
+			
+		
+			
+				<li><a href="forumdisplay.php?489-VIRB-Edit-(Mac)">VIRB Edit (Mac)</a></li>
+			
+		
+			
+					</ol>
+				</li>
+			
+		
+			
+					</ol>
+				</li>
+			
+		
+			
+				<li><a href="forumdisplay.php?460-Garmin-Express">Garmin Express</a>
+					<ol class="d1">
+						
+		
+			
+				<li><a href="forumdisplay.php?461-Garmin-Express-Mac">Garmin Express - Mac</a></li>
+			
+		
+			
+				<li><a href="forumdisplay.php?462-Garmin-Express-PC">Garmin Express - PC</a></li>
+			
+		
+			
+					</ol>
+				</li>
+			
+		
+			
+				<li><a href="forumdisplay.php?191-Mac-amp-Windows-Software">Mac &amp; Windows Software</a>
+					<ol class="d1">
+						
+		
+			
+				<li><a href="forumdisplay.php?167-Mac-Software">Mac Software</a>
+					<ol class="d2">
+						
+		
+			
+				<li><a href="forumdisplay.php?171-BaseCamp">BaseCamp</a></li>
+			
+		
+			
+				<li><a href="forumdisplay.php?298-HomePort">HomePort</a></li>
+			
+		
+			
+				<li><a href="forumdisplay.php?425-VIRB-Edit">VIRB Edit</a></li>
+			
+		
+			
+					</ol>
+				</li>
+			
+		
+			
+				<li><a href="forumdisplay.php?168-Windows-Software">Windows Software</a>
+					<ol class="d2">
+						
+		
+			
+				<li><a href="forumdisplay.php?179-BaseCamp">BaseCamp</a></li>
+			
+		
+			
+				<li><a href="forumdisplay.php?214-HomePort">HomePort</a></li>
+			
+		
+			
+				<li><a href="forumdisplay.php?426-VIRB-Edit">VIRB Edit</a></li>
+			
+		
+			
+					</ol>
+				</li>
+			
+		
+			
+				<li><a href="forumdisplay.php?471-VIRB-Video-Overlays">VIRB Video Overlays</a>
+					<ol class="d2">
+						
+		
+			
+				<li><a href="forumdisplay.php?472-Discussion">Discussion</a></li>
+			
+		
+			
+				<li><a href="forumdisplay.php?473-Example-Overlays">Example Overlays</a></li>
+			
+		
+			
+					</ol>
+				</li>
+			
+		
+			
+					</ol>
+				</li>
+			
+		
+			
+				<li><a href="forumdisplay.php?53-Developers">Developers</a>
+					<ol class="d1">
+						
+		
+			
+				<li><a href="forumdisplay.php?479-Connect-IQ">Connect IQ</a>
+					<ol class="d2">
+						
+		
+			
+				<li><a href="forumdisplay.php?509-Connect-IQ-App-Ideas">Connect IQ App Ideas</a></li>
+			
+		
+			
+				<li><a href="forumdisplay.php?515-Connect-IQ-Showcase">Connect IQ Showcase</a></li>
+			
+		
+			
+					</ol>
+				</li>
+			
+		
+			
+				<li><a href="forumdisplay.php?54-Garmin-Developer-Information">Garmin Developer Information</a></li>
+			
+		
+			
+				<li><a href="forumdisplay.php?204-Garmin-Custom-Maps">Garmin Custom Maps</a>
+					<ol class="d2">
+						
+		
+			
+				<li><a href="forumdisplay.php?205-Creating-Garmin-Custom-Maps">Creating Garmin Custom Maps</a></li>
+			
+		
+			
+					</ol>
+				</li>
+			
+		
+			
+					</ol>
+				</li>
+			
+		
+		
+	</ul>
+</div>
+<div class="clear"></div>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+	<!-- next / previous links -->
+	<div class="navlinks">
+		
+			<strong>&laquo;</strong>
+			<a href="showthread.php?78617-VIRB-Elite-Wireless-API&amp;goto=nextoldest" rel="nofollow">Previous Thread</a>
+			|
+			<a href="showthread.php?78617-VIRB-Elite-Wireless-API&amp;goto=nextnewest" rel="nofollow">Next Thread</a>
+			<strong>&raquo;</strong>
+		
+	</div>
+	<!-- / next / previous links -->
+
+<div id="thread_info" class="thread_info block">
+	
+	
+	
+	
+	
+	
+	<div class="options_block_container">
+		
+		<div class="options_block">
+			<h4 class="collapse blockhead options_correct">
+				<a class="collapse" id="collapse_posting_rules" href="showthread.php?78617-VIRB-Elite-Wireless-API/page3#top"><img src="images/buttons/collapse_40b.png" alt="" /></a>
+				Posting Permissions
+			</h4>
+			<div id="posting_rules" class="thread_info_block blockbody formcontrols floatcontainer options_correct">
+				
+<div id="forumrules" class="info_subblock">
+
+	<ul class="youcandoblock">
+		<li>You <strong>may not</strong> post new threads</li>
+		<li>You <strong>may not</strong> post replies</li>
+		<li>You <strong>may not</strong> post attachments</li>
+		<li>You <strong>may not</strong> edit your posts</li>
+		<li>&nbsp;</li>
+	</ul>
+	<div class="bbcodeblock">
+		<ul>
+			<li><a href="misc.php?do=bbcode" target="_blank">BB code</a> is <strong>On</strong></li>
+			<li><a href="misc.php?do=showsmilies" target="_blank">Smilies</a> are <strong>On</strong></li>
+			<li><a href="misc.php?do=bbcode#imgcode" target="_blank">[IMG]</a> code is <strong>On</strong></li>
+			<li><a href="misc.php?do=bbcode#videocode" target="_blank">[VIDEO]</a> code is <strong>On</strong></li>
+			<li>HTML code is <strong>Off</strong></li>
+		</ul>
+	</div>
+	<p class="rules_link"><a href="misc.php?do=showrules" target="_blank">Forum Rules</a></p>
+
+</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+<div id="footer" class="floatcontainer footer">
+
+	<form action="forum.php" method="get" id="footer_select" class="footer_select">
+
+		
+		
+		
+	</form>
+
+	<ul id="footer_links" class="footer_links">
+		<li><a href="http://www.garmin.com/garmin/cms/site/us/support/supportcontact" rel="nofollow" accesskey="9">Contact Us</a></li>
+		<li><a href="https://forums.garmin.com/">Garmin Forum</a></li>
+		
+		
+		<li><a href="archive/index.php">Archive</a></li>
+		<li><a href="http://glowhost.com" target="_blank">Web Hosting</a></li>
+		<li><a href="http://www.garmin.com/en-US/legal/privacy-statement">Privacy Statement</a></li>
+		<li><a href="http://www.garmin.com/en-US/legal/terms-of-use">Terms of Use</a></li>
+		<li><a href="showthread.php?78617-VIRB-Elite-Wireless-API/page3#top" onclick="document.location.hash='top'; return false;">Top</a></li>
+	</ul>
+	
+	
+	
+	
+	<script type="text/javascript">
+	<!--
+		// Main vBulletin Javascript Initialization
+		vBulletin_init();
+	//-->
+	</script>
+        
+</div>
+</div> <!-- closing div for body_wrapper -->
+
+<div class="below_body">
+<div id="footer_time" class="shade footer_time">All times are GMT -6. The time now is <span class="time">03:42 PM</span>.</div>
+
+<div id="footer_copyright" class="shade footer_copyright">
+	<!-- Do not remove this copyright notice -->
+	Powered by <a href="https://www.vbulletin.com" id="vbulletinlink">vBulletin&reg;</a> Version 4.2.2 <br />Copyright &copy; 2016 vBulletin Solutions, Inc. All rights reserved. 
+	<!-- Do not remove this copyright notice -->	
+</div>
+<div id="footer_morecopyright" class="shade footer_morecopyright">
+	<!-- Do not remove cronimage or your scheduled tasks will cease to function -->
+	
+	<!-- Do not remove cronimage or your scheduled tasks will cease to function -->
+	Copyright 1996-2014 Garmin Ltd. or its subsidiaries
+	
+</div>
+ 
+
+</div>
+</body>
+</html>
