@@ -11,11 +11,11 @@ After connecting the computer to the WiFi network emitted by the camera, this cl
 Enabling the cross origin resource sharing (CORS)
 =======================
 
-The client opened in web browser with default configuration will not be able to communicate with the local IP address `192.168.0.1` because of the same-origin policy. The workaround is to activate the CORS by overwriting the `Access-Control-*` HTTP headers. There are many ways to achieve it, the suggested workaround is the [CORS Everywhere add-on for Firefox](https://addons.mozilla.org/en-US/firefox/addon/cors-everywhere/).
+The client opened in a web browser with default configuration will not be able to communicate with the local IP address `192.168.0.1` because of the same-origin policy. The workaround is to enforce the CORS by overwriting the `Access-Control-*` HTTP headers. There are many ways to achieve it, the suggested workaround is the [CORS Everywhere add-on for Firefox](https://addons.mozilla.org/en-US/firefox/addon/cors-everywhere/).
 
-Using the client:
+Using the client
 =================
-1. Install the CORS Everywhere add-on, ensure the add-on is activated
+1. Install the CORS Everywhere add-on, ensure the add-on is activated.
 1. Connect the computer to the WiFi network emitted by the camera.
-2. Open this client in Firefox, switch on the CORS Everywhere add-on
+2. Open this client in Firefox, switch on the CORS Everywhere add-on.
 3. Once the client is able to connect to the device, an interface allowing to configure available services will be displayed.
