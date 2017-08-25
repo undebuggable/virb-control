@@ -196,7 +196,7 @@ function VirbControl () {
         var virbControl = new VirbControl();
         virbControl.watchStatus();
         WATCH_STATUS_INTERVALID = setInterval(virbControl.watchStatus, WATCH_STATUS_PERIOD);
-    }
+    };
     (function init () {
         window.addEventListener('load', onWindowLoad);
     })();

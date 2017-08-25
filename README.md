@@ -16,7 +16,7 @@ The client opened in a web browser with default configuration will not be able t
 Using the client
 =================
 1. Install the CORS Everywhere add-on in the Firefox, restart the browser and ensure the add-on is activated.
-1. Connect the computer to the WiFi network emitted by the camera.
-2. Open this client in Firefox (by cloning this repository of by visiting [this URL](https://ow.cx/static/virb-control.html)).
-3. Switch on the CORS Everywhere add-on.
-4. Once the client is able to connect to the device, an interface allowing to configure available services will be displayed.
+2. Connect the computer to the WiFi network emitted by the camera.
+3. Open this client in Firefox.
+4. Switch on the CORS Everywhere add-on.
+5. Once the client is able to connect to the device, an interface allowing to configure available services will be displayed.
