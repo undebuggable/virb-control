@@ -19,12 +19,17 @@ Zoom 2: 100 degrees
 Ultra Zoom: 90 degrees
 */
 
+  EXCEPTION = {
+    FORM_NOT_FOUND: 'The HTML form not found',
+    DOCUMENT_NOT_FOUND: 'The HTML document not found'
+  },
   ID = {
+    FORM: 'virb-control-form',
     DEVICE_ONOFF: 'device-features-onoff',
-    DEVICE_MULTIOPTION: 'device-features-multioption',
-    DEVICE_STATUS: 'device-status',
-    DEVICE_INFO: 'device-info',
-    DEVICE_PREVIEW: 'device-preview',
+    ELEM_DEVICE_MULTIOPTION: 'device-features-multioption',
+    ELEM_DEVICE_STATUS: 'device-status',
+    ELEM_DEVICE_INFO: 'device-info',
+    ELEM_DEVICE_PREVIEW: 'device-preview',
     DEVICE_CONTROL: 'device-features-control'
   },
   CSS = {
@@ -67,6 +72,6 @@ Ultra Zoom: 90 degrees
     TIMELAPSE_VIDEO: [{gps:"off"},{recordingLED:"0"},{videoMode:"1080p"},{fieldOfView:"ultraZoom"},{videoLoop:"0"},{microphone:"0"},{"imageSize":"4664x3496"},{stabilization:"0"},{rotation:"1"}],
     TIMELAPSE_PHOTO: []
   },
-  WATCH_STATUS_PERIOD = 1000,
+  WATCH_STATUS_PERIOD = 1352,
   WATCH_STATUS_INTERVALID = null
 ;

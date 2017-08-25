@@ -1,29 +1,27 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>Garmin VIRB Elite</title>
-<link type="text/css" rel="stylesheet" href="virb-control.css">	
-</head>
-<body>
-
-<aside id="device-status"></aside>
-<aside id="device-info"></aside>
-<aside id="device-preview"></aside>
-
-<form>
-<fieldset id='device-features-onoff'></fieldset>
-<fieldset id='device-features-control'>
-<input type='button' name='startRecording' value='Start recording' />
-<input type='button' name='stopRecording' value='Stop recording' />
-<input type='button' name='snapPicture' value='Snap picture'/>
-<input type='button' name='export-status' value='Export status history as CSV'/>
-</fieldset>
-<aside id='device-features-multioption'></aside>
-</form>
-
-<script type="application/javascript" src="virb-control-config.js"></script>
-<script type="application/javascript" src="virb-control.js"></script>
-
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <title>Garmin VIRB Elite</title>
+        <link type="text/css" rel="stylesheet" href="virb-control.css">
+    </head>
+    <body>
+        <aside id="device-status"></aside>
+        <aside id="device-info"></aside>
+        <aside id="device-preview"></aside>
+        <form id="virb-control-form" name="virb_control_form">
+            <fieldset id='device-features-onoff'></fieldset>
+            <fieldset id='device-features-control'>
+                <input type='button' name='startRecording' value='Start recording' />
+                <input type='button' name='stopRecording' value='Stop recording' />
+                <input type='button' name='snapPicture' value='Snap picture'/>
+                <input type='button' name='export-status' value='Export status history as CSV'/>
+            </fieldset>
+            <aside id='device-features-multioption'></aside>
+        </form>
+        <script type="application/javascript" src="virb-control-config.js"></script>
+        <script type="application/javascript" src="virb-control-status.js"></script>
+        <script type="application/javascript" src="virb-control-form.js"></script>
+        <script type="application/javascript" src="virb-control.js"></script>
+    </body>
 </html>
