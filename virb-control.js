@@ -4,7 +4,7 @@ function VirbControl () {
         statusTrack = [],
         isDetecting = true,
         xhrStatus = new XMLHttpRequest(),
-        virbControlForm = new VirbControlForm(document.getElementById(ID.FORM), requestSet),
+        virbControlForm = new VirbControlForm(document.getElementById(ID.FORM)),
         virbControlStatus = new VirbControlStatus(document)
     ;
     function removeEventListeners () {
@@ -159,8 +159,11 @@ function VirbControl () {
             };
         }
     };
-    function requestSet (command) {
-        var xhrFeatures = new XMLHttpRequest();
+    function requestSet (e) {
+        var
+            xhrFeatures = new XMLHttpRequest(),
+            command = e.detail
+        ;
         xhrFeatures.addEventListener('readystatechange', onStateChangeSet, false);
         xhrFeatures.open('POST', URL, true);
         xhrFeatures.setRequestHeader('Content-Type', 'application/json');
@@ -179,9 +182,13 @@ function VirbControl () {
         xhrStatus.setRequestHeader('Content-Type', 'application/json');
         xhrStatus.send(JSON.stringify(COMMAND.STATUS));
     };
-    publicInterface = {
-        watchStatus: watchStatus
-    };
+    (function () {
+        publicInterface = {
+            watchStatus: watchStatus
+        };
+        window.document.addEventListener(EVENT_INPUT_CLICK, requestSet);
+        window.document.addEventListener(EVENT_EXPORT_HISTORY, exportStatusHistory);
+    })();
     return publicInterface;
 };
 (function init () {

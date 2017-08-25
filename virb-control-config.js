@@ -19,6 +19,9 @@ Zoom 2: 100 degrees
 Ultra Zoom: 90 degrees
 */
 
+
+  EVENT_EXPORT_HISTORY = 'virb-control-export-history',
+  EVENT_INPUT_CLICK = 'virb-control-input-click',
   EXCEPTION = {
     FORM_NOT_FOUND: 'The HTML form not found',
     DOCUMENT_NOT_FOUND: 'The HTML document not found'

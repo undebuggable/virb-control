@@ -1,4 +1,4 @@
-function VirbControlForm (_elemForm, requestSet) {
+function VirbControlForm (_elemForm) {
     if (!_elemForm) {
       throw new Error(EXCEPTION.FORM_NOT_FOUND);
     } else {
@@ -7,8 +7,6 @@ function VirbControlForm (_elemForm, requestSet) {
             elemForm = _elemForm
         ;
         self.elemOnoff = elemForm.querySelector('#'+ID.DEVICE_ONOFF);
-        //[FIXME] Do this with custom event bubbled to VirbControl instance
-        self.requestSet = requestSet;
         self._bindOnInputClick = self.onInputClick.bind(self);
     };
 }
@@ -50,6 +48,10 @@ VirbControlForm.prototype.kilobytesToSpaceString = function (kib) {
     kib = kib - gib * 1024 * 1024 - mib * 1024;
     return ''.concat(gib + 'GiB ', mib + 'MiB ', kib + 'KiB');
 };
+VirbControlForm.prototype.virbControlDispatchEvent = function (eventName, eventObject) {
+    var eventCustom = new CustomEvent(eventName, {detail: eventObject});
+    window.document.dispatchEvent(eventCustom);
+};
 VirbControlForm.prototype.onInputClick = function (e) {
     // debugger;
     var
@@ -80,11 +82,10 @@ VirbControlForm.prototype.onInputClick = function (e) {
                     })[0].value
             );
             console.log('Controlling the device\t' + JSON.stringify(controlCommand));
-            this.requestSet(controlCommand);
+            this.virbControlDispatchEvent(EVENT_INPUT_CLICK, controlCommand);
             this.disableAllInputs(true);
         } else if (elemTargetName == 'export-status') {
-            //[FIXME] Do this with custom event bubbled to VirbControl instance
-            // exportStatusHistory();
+            this.virbControlDispatchEvent(EVENT_EXPORT_HISTORY);
         }
     } else {
         if (elemTargetType == 'checkbox') {
@@ -96,7 +97,7 @@ VirbControlForm.prototype.onInputClick = function (e) {
         COMMAND.UPDATE.feature = elemTargetName;
         COMMAND.UPDATE.value = value;
         console.log('Updating the feature\t' + JSON.stringify(COMMAND.UPDATE));
-        this.requestSet(COMMAND.UPDATE);
+        this.virbControlDispatchEvent(EVENT_INPUT_CLICK, COMMAND.UPDATE);
         this.disableAllInputs(true);
     };
 };
