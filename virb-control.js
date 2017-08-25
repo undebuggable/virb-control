@@ -14,9 +14,10 @@ function VirbControl () {
             function (input) {
                 //Remove event listeners only from dynamically created inputs
                 if (input.type == 'button') return;
-                input.removeEventListener('click', virbControlForm._bindOnInputClick, false);
-                input.removeEventListener('tap', virbControlForm._bindOnInputClick, false);
-            });
+                input.removeEventListener(EVENT_CLICK, virbControlForm._bindOnInputClick, false);
+                input.removeEventListener(EVENT_TAP, virbControlForm._bindOnInputClick, false);
+            }
+        );
     };
     function exportStatusHistory () {
         var csv = '';
@@ -48,8 +49,8 @@ function VirbControl () {
                     Array.prototype.forEach.call(
                         document.getElementsByTagName('input'),
                         function (input) {
-                            input.addEventListener('click', virbControlForm._bindOnInputClick, false);
-                            input.addEventListener('tap', virbControlForm._bindOnInputClick, false);
+                            input.addEventListener(EVENT_CLICK, virbControlForm._bindOnInputClick, false);
+                            input.addEventListener(EVENT_TAP, virbControlForm._bindOnInputClick, false);
                         });
                     requestGet(COMMAND.INFO);
                     requestGet(COMMAND.PREVIEW);
@@ -60,7 +61,7 @@ function VirbControl () {
                 responseJSON.isoTime = (new Date()).toISOString();
                 statusTrack.push(responseJSON);
                 virbControlStatus.elemStatus.innerHTML = '';
-                virbControlForm.renderConfigurationFeatureUI(responseJSON, virbControlStatus.elemStatus);
+                virbControlStatus.renderConfigurationFeatureUI(responseJSON, virbControlStatus.elemStatus);
             }
         } else {
             //detecting();
@@ -74,7 +75,7 @@ function VirbControl () {
                 responseCommand,
                 response = JSON.parse(this.responseText),
                 responseKeys = Object.keys(response)
-                ;
+            ;
             //debugger;
             if (+response.result == 1) {
                 virbControlForm.disableAllInputs(false);
@@ -85,13 +86,9 @@ function VirbControl () {
                 switch (responseCommand) {
                     case RESPONSE.FEATURES:
                         removeEventListeners();
-                        virbControlForm.elemOnoff.innerHTML = '';
-                        virbControlStatus.elemFeatures.innerHTML = '';
+                        virbControlForm.clear();
                         response.features.forEach(function (feature) {
-                            +feature.type == 1 &&
-                            virbControlForm.renderConfigurationFeatureUI(feature, virbControlStatus.elemFeatures);
-                            +feature.type == 2 &&
-                            virbControlForm.renderConfigurationFeatureUI(feature, virbControlForm.elemOnoff);
+                            virbControlForm.renderConfigurationFeatureUI(feature);
                         });
                         virbControlForm.showAllFieldsets(true);
                         break;
@@ -99,7 +96,7 @@ function VirbControl () {
                         removeEventListeners();
                         virbControlStatus.elemInfo.innerHTML = '';
                         response.deviceInfo.forEach(function (feature) {
-                            virbControlForm.renderConfigurationFeatureUI(feature, virbControlStatus.elemInfo);
+                            virbControlStatus.renderConfigurationFeatureUI(feature, virbControlStatus.elemInfo);
                         });
                         break;
                     case RESPONSE.PREVIEW:
@@ -128,7 +125,7 @@ function VirbControl () {
                 responseCommand,
                 response = JSON.parse(this.responseText),
                 responseKeys = Object.keys(response)
-                ;
+            ;
             //debugger;
             virbControlForm.disableAllInputs(false);
             switch (+response.result) {
@@ -146,13 +143,9 @@ function VirbControl () {
             switch (responseCommand) {
                 case RESPONSE.FEATURES:
                     removeEventListeners();
-                    virbControlForm.elemOnoff.innerHTML = '';
-                    virbControlStatus.elemFeatures.innerHTML = '';
+                    virbControlForm.clear();
                     response.features.forEach(function (feature) {
-                        +feature.type == 1 &&
-                        virbControlForm.renderConfigurationFeatureUI(feature, virbControlStatus.elemFeatures);
-                        +feature.type == 2 &&
-                        virbControlForm.renderConfigurationFeatureUI(feature, virbControlForm.elemOnoff);
+                        virbControlForm.renderConfigurationFeatureUI(feature);
                     });
                     virbControlForm.showAllFieldsets(true);
                     break;
@@ -164,40 +157,40 @@ function VirbControl () {
             xhrFeatures = new XMLHttpRequest(),
             command = e.detail
         ;
-        xhrFeatures.addEventListener('readystatechange', onStateChangeSet, false);
-        xhrFeatures.open('POST', URL, true);
-        xhrFeatures.setRequestHeader('Content-Type', 'application/json');
+        xhrFeatures.addEventListener(EVENT_STATE_CHANGE, onStateChangeSet, false);
+        xhrFeatures.open(HTTP_METHOD_DEFAULT, URL, true);
+        xhrFeatures.setRequestHeader(HTTP_CONTENT_TYPE, MIME_JSON);
         xhrFeatures.send(JSON.stringify(command));
     };
     function requestGet (command) {
         var xhrFeatures = new XMLHttpRequest();
-        xhrFeatures.addEventListener('readystatechange', onStateChangeGet, false);
-        xhrFeatures.open('POST', URL, true);
-        xhrFeatures.setRequestHeader('Content-Type', 'application/json');
+        xhrFeatures.addEventListener(EVENT_STATE_CHANGE, onStateChangeGet, false);
+        xhrFeatures.open(HTTP_METHOD_DEFAULT, URL, true);
+        xhrFeatures.setRequestHeader(HTTP_CONTENT_TYPE, MIME_JSON);
         xhrFeatures.send(JSON.stringify(command));
     }
     function watchStatus() {
-        xhrStatus.addEventListener('readystatechange', onStateChangeStatus, false);
-        xhrStatus.open('POST', URL, true);
-        xhrStatus.setRequestHeader('Content-Type', 'application/json');
+        xhrStatus.open(HTTP_METHOD_DEFAULT, URL, true);
+        xhrStatus.setRequestHeader(HTTP_CONTENT_TYPE, MIME_JSON);
         xhrStatus.send(JSON.stringify(COMMAND.STATUS));
     };
     (function () {
         publicInterface = {
-            watchStatus: watchStatus
+            watchStatus: watchStatus,
+            xhrStatus: xhrStatus
         };
         window.document.addEventListener(EVENT_INPUT_CLICK, requestSet);
         window.document.addEventListener(EVENT_EXPORT_HISTORY, exportStatusHistory);
+        xhrStatus.addEventListener(EVENT_STATE_CHANGE, onStateChangeStatus, false);
     })();
     return publicInterface;
 };
 (function init () {
     function onWindowLoad () {
         var virbControl = new VirbControl();
-        virbControl.watchStatus();
         WATCH_STATUS_INTERVALID = setInterval(virbControl.watchStatus, WATCH_STATUS_PERIOD);
     };
     (function init () {
-        window.addEventListener('load', onWindowLoad);
+        window.addEventListener(EVENT_LOAD, onWindowLoad);
     })();
 })();

@@ -19,9 +19,19 @@ Zoom 2: 100 degrees
 Ultra Zoom: 90 degrees
 */
 
+  HTTP_METHOD_POST = 'POST',
+  HTTP_METHOD_DEFAULT = HTTP_METHOD_POST,
+  HTTP_CONTENT_TYPE = 'Content-Type',
+
+  MIME_JSON = 'application/json',
 
   EVENT_EXPORT_HISTORY = 'virb-control-export-history',
   EVENT_INPUT_CLICK = 'virb-control-input-click',
+  EVENT_CLICK = 'click',
+  EVENT_TAP = 'tap',
+  EVENT_STATE_CHANGE = 'readystatechange',
+  EVENT_LOAD = 'load',
+
   EXCEPTION = {
     FORM_NOT_FOUND: 'The HTML form not found',
     DOCUMENT_NOT_FOUND: 'The HTML document not found'

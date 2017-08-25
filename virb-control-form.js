@@ -7,6 +7,7 @@ function VirbControlForm (_elemForm) {
             elemForm = _elemForm
         ;
         self.elemOnoff = elemForm.querySelector('#'+ID.DEVICE_ONOFF);
+        self.elemFeatures = elemForm.querySelector('#'+ID.ELEM_DEVICE_MULTIOPTION);
         self._bindOnInputClick = self.onInputClick.bind(self);
     };
 }
@@ -30,23 +31,17 @@ VirbControlForm.prototype.showAllFieldsets = function (isVisible) {
 };
 VirbControlForm.prototype.clear = function () {
     this.elemOnoff.innerHTML = '';
+    this.elemFeatures.innerHTML = '';
 };
-VirbControlForm.prototype.renderConfigurationFeatureUI = function (feature, elemParent) {
-    elemParent.appendChild(this.parseResponse(feature));
-};
-VirbControlForm.prototype.secondsToTimeString = function (seconds) {
-    var minutes, hours;
-    hours = Math.floor(seconds/3600);
-    minutes = Math.floor(seconds/60) - hours * 60;
-    seconds = seconds - hours * 3600 - minutes * 60;
-    return ''.concat(hours + 'h ', minutes + 'min ', seconds + 'sec');
-};
-VirbControlForm.prototype.kilobytesToSpaceString = function (kib) {
-    var mib, gib;
-    gib = Math.floor(kib/(1024*1024));
-    mib = Math.floor(kib/1024) - gib * 1024;
-    kib = kib - gib * 1024 * 1024 - mib * 1024;
-    return ''.concat(gib + 'GiB ', mib + 'MiB ', kib + 'KiB');
+VirbControlForm.prototype.renderConfigurationFeatureUI = function (feature) {
+    var elemParent = (
+        +feature.type == 1 ?
+            this.elemFeatures : (
+            +feature.type == 2 ?
+                this.elemOnoff : null
+        )
+    );
+    elemParent && elemParent.appendChild(this.parseResponse(feature));
 };
 VirbControlForm.prototype.virbControlDispatchEvent = function (eventName, eventObject) {
     var eventCustom = new CustomEvent(eventName, {detail: eventObject});
@@ -106,7 +101,7 @@ VirbControlForm.prototype.parseResponse = function (response) {
         that = this,
         fragment = document.createDocumentFragment()
     ;
-    //debugger;
+    // debugger;
     switch (+response.type) {
         case 1:
             var
@@ -124,9 +119,9 @@ VirbControlForm.prototype.parseResponse = function (response) {
                 radio.setAttribute('id', response.feature + '-' + optionName);
                 radio.setAttribute('value', optionName);
                 radio.setAttribute('name', response.feature);
-                radio.addEventListener('click', that._bindOnInputClick, false);
-                radio.addEventListener('tap', that._bindOnInputClick, false);
-                (optionName == response.value) && radio.setAttribute('checked', 'true')
+                radio.addEventListener(EVENT_CLICK, that._bindOnInputClick, false);
+                radio.addEventListener(EVENT_TAP, that._bindOnInputClick, false);
+                (optionName == response.value) && radio.setAttribute('checked', 'true');
                 label.textContent = optionName.concat(
                     KEY.FEATURE_SUMMARIES in response ?
                     ' (' + response[KEY.FEATURE_SUMMARIES][index] + ')'
@@ -151,44 +146,13 @@ VirbControlForm.prototype.parseResponse = function (response) {
             checkbox.setAttribute('name', response.feature);
             (response.value == response.enabled) && checkbox.setAttribute('checked', 'true');
             checkbox.setAttribute('value', response.feature);
-            checkbox.addEventListener('click', that._bindOnInputClick, false);
-            checkbox.addEventListener('tap', that._bindOnInputClick, false);
+            checkbox.addEventListener(EVENT_CLICK, that._bindOnInputClick, false);
+            checkbox.addEventListener(EVENT_TAP, that._bindOnInputClick, false);
             label.textContent = response.feature;
             label.setAttribute('for', response.feature);
             paragraph.appendChild(checkbox);
             paragraph.appendChild(label);
             fragment.appendChild(paragraph);
-            break;
-        default:
-            var
-                dd, dt, ol, seconds, minutes, hours, mib, gib, kib,
-                ol = document.createElement('ol')
-            ;
-            Object.keys(response).forEach(function (key) {
-                dt = document.createElement('dt');
-                dd = document.createElement('dd');
-                dt.textContent = key;
-                switch (key) {
-                    case KEY.STATUS_SPACE_AVAILABLE:
-                        dd.textContent = that.kilobytesToSpaceString(+response[key]);
-                        break;
-                    case KEY.STATUS_SPACE_TOTAL:
-                        dd.textContent = that.kilobytesToSpaceString(+response[key]);
-                        break;
-                    case KEY.STATUS_TIME_RECORDING:
-                        dd.textContent = that.secondsToTimeString(+response[key]);
-                        break;
-                    case KEY.STATUS_TIME_REMAINING:
-                        dd.textContent = that.secondsToTimeString(+response[key]);
-                        break;
-                    default:
-                        dd.textContent = response[key];
-                        break;
-                };
-                ol.appendChild(dt)
-                ol.appendChild(dd)
-            });
-            fragment.appendChild(ol);
             break;
     };
     return fragment;
