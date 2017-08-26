@@ -27,6 +27,8 @@ Ultra Zoom: 90 degrees
 
   EVENT_EXPORT_HISTORY = 'virb-control-export-history',
   EVENT_INPUT_CLICK = 'virb-control-input-click',
+  EVENT_GET_COMPLETE = 'virb-control-get-complete',
+  EVENT_SET_COMPLETE = 'virb-control-set-complete',
   EVENT_CLICK = 'click',
   EVENT_TAP = 'tap',
   EVENT_STATE_CHANGE = 'readystatechange',
@@ -81,9 +83,13 @@ Ultra Zoom: 90 degrees
   PROFILES = {
     VIDEO_CAR: [{gps:"whenrecording"},{recordingLED:"1"},{videoMode:"1080p"},{fieldOfView:"ultraZoom"},{videoLoop:"30"},{microphone:"1"},{stabilization:"1"},{rotation:"1"}],
     VIDEO_NORMAL: [],
-    TIMELAPSE_VIDEO: [{gps:"off"},{recordingLED:"0"},{videoMode:"1080p"},{fieldOfView:"ultraZoom"},{videoLoop:"0"},{microphone:"0"},{"imageSize":"4664x3496"},{stabilization:"0"},{rotation:"1"}],
+    TIMELAPSE_VIDEO: [
+        {gps:"off"},{recordingLED:"0"},
+        {videoMode:"1080p"},{fieldOfView:"ultraZoom"},
+        {videoLoop:"0"},{microphone:"0"},
+        {"imageSize":"4664x3496"},{stabilization:"0"},
+        {rotation:"1"}
+    ],
     TIMELAPSE_PHOTO: []
-  },
-  WATCH_STATUS_INTERVAL = 1352,
-  WATCH_STATUS_INTERVAL_ID = null
+  }
 ;

@@ -1,5 +1,11 @@
 function VirbControl (_window) {
     var
+        WATCH_STATUS_INTERVAL = 1352,
+        WATCH_STATUS_INTERVAL_ID = null,
+        NON_BLOCKING = {
+            IS_GETTING: false,
+            IS_SETTING: false
+        },
         window = _window,
         document = window.document,
         publicInterface = {},
@@ -37,14 +43,15 @@ function VirbControl (_window) {
     function onStateChangeStatus () {
         if (xhrStatus.readyState == XMLHttpRequest.DONE) {
             var
-                responseJSON
-                ;
+                responseJSON,
+                elemStatus = virbControlStatus.elemStatus
+            ;
             if (!xhrStatus.responseText.length) {
                 isDetecting = true;
                 detecting();
                 virbControlForm.showAllFieldsets(false);
             } else {
-                //debugger;
+                // debugger;
                 if (isDetecting) {
                     //debugger;
                     document.body.classList.remove(CSS.DETECTING);
@@ -53,16 +60,21 @@ function VirbControl (_window) {
                         function (input) {
                             input.addEventListener(EVENT_CLICK, virbControlForm.onInputClick, false);
                             input.addEventListener(EVENT_TAP, virbControlForm.onInputClick, false);
-                        });
-                    requestGet(COMMAND.INFO);
-                    requestGet(COMMAND.PREVIEW);
-                    requestGet(COMMAND.FEATURES);
+                        }
+                    );
+
+                    //Don't overwhelm the camera...
+                    //[FIXME] Make these calls synchronous i.e. invoke the next one after the previous one is completed
+                    setTimeout(requestGet.bind({'virbCommand': COMMAND.INFO}), 50);
+                    setTimeout(requestGet.bind({'virbCommand': COMMAND.PREVIEW}), 350);
+                    setTimeout(requestGet.bind({'virbCommand': COMMAND.FEATURES}), 650);
+
                     isDetecting = false;
                 };
                 responseJSON = JSON.parse(xhrStatus.responseText);
                 responseJSON.isoTime = (new Date()).toISOString();
                 statusTrack.push(responseJSON);
-                virbControlStatus.elemStatus.innerHTML = '';
+                while (elemStatus.childNodes.length) elemStatus.removeChild(elemStatus.firstChild);
                 virbControlStatus.renderConfigurationFeatureUI(responseJSON, virbControlStatus.elemStatus);
             }
         } else {
@@ -72,7 +84,10 @@ function VirbControl (_window) {
     function onStateChangeGet () {
         if (this.readyState == XMLHttpRequest.DONE) {
             console.log('onStateChangeGet\n' + this.responseText)
-            if (!this.responseText.length) return;
+            if (!this.responseText.length) {
+                NON_BLOCKING.IS_GETTING = false;
+                return;
+            };
             var
                 responseCommand,
                 response = JSON.parse(this.responseText),
@@ -107,7 +122,7 @@ function VirbControl (_window) {
                         var
                             previewUrl = document.createElement('a'),
                             notice = document.createElement('span')
-                            ;
+                        ;
                         previewUrl.title = response.url;
                         previewUrl.textContent = response.url;
                         previewUrl.href = response.url;
@@ -117,12 +132,16 @@ function VirbControl (_window) {
                         break;
                 }
             };
-        }
+            NON_BLOCKING.IS_GETTING = false;
+        };
     };
     function onStateChangeSet () {
         if (this.readyState == XMLHttpRequest.DONE) {
             console.log('onStateChangeGet\n' + this.responseText)
-            if (!this.responseText.length) return;
+            if (!this.responseText.length) {
+                NON_BLOCKING.IS_SETTING = false;
+                return;
+            };
             var
                 responseCommand,
                 response = JSON.parse(this.responseText),
@@ -152,9 +171,12 @@ function VirbControl (_window) {
                     virbControlForm.showAllFieldsets(true);
                     break;
             };
-        }
+            NON_BLOCKING.IS_SETTING = false;
+        };
     };
     function requestSet (e) {
+        // if (NON_BLOCKING.IS_GETTING || NON_BLOCKING.IS_SETTING) return;
+        NON_BLOCKING.IS_SETTING = true;
         var
             xhrFeatures = new XMLHttpRequest(),
             command = e.detail
@@ -165,6 +187,9 @@ function VirbControl (_window) {
         xhrFeatures.send(JSON.stringify(command));
     };
     function requestGet (command) {
+        // if (NON_BLOCKING.IS_GETTING || NON_BLOCKING.IS_SETTING) return;
+        NON_BLOCKING.IS_GETTING = true;
+        if (!command) command = this.virbCommand;
         var xhrFeatures = new XMLHttpRequest();
         xhrFeatures.addEventListener(EVENT_STATE_CHANGE, onStateChangeGet, false);
         xhrFeatures.open(HTTP_METHOD_DEFAULT, URL_VIRB, true);
@@ -172,18 +197,20 @@ function VirbControl (_window) {
         xhrFeatures.send(JSON.stringify(command));
     }
     function watchStatus() {
+        if (NON_BLOCKING.IS_GETTING || NON_BLOCKING.IS_SETTING) return;
         xhrStatus.open(HTTP_METHOD_DEFAULT, URL_VIRB, true);
         xhrStatus.setRequestHeader(HTTP_CONTENT_TYPE, MIME_JSON);
         xhrStatus.send(JSON.stringify(COMMAND.STATUS));
     };
     (function () {
         publicInterface = {
-            watchStatus: watchStatus,
-            xhrStatus: xhrStatus
+            // watchStatus: watchStatus,
+            // xhrStatus: xhrStatus
         };
         document.addEventListener(EVENT_INPUT_CLICK, requestSet);
         document.addEventListener(EVENT_EXPORT_HISTORY, exportStatusHistory);
         xhrStatus.addEventListener(EVENT_STATE_CHANGE, onStateChangeStatus, false);
+        WATCH_STATUS_INTERVAL_ID = setInterval(watchStatus, WATCH_STATUS_INTERVAL);
     })();
     return publicInterface;
 };
@@ -191,7 +218,6 @@ function VirbControl (_window) {
     var window = _window;
     function onWindowLoad () {
         var virbControl = new VirbControl(window);
-        WATCH_STATUS_INTERVAL_ID = setInterval(virbControl.watchStatus, WATCH_STATUS_INTERVAL);
     };
     (function init () {
         window.addEventListener(EVENT_LOAD, onWindowLoad);
