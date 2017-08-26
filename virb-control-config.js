@@ -77,13 +77,13 @@ Ultra Zoom: 90 degrees
     INFO: "deviceInfo",
     PREVIEW: "url"
   },
-  URL = "http://192.168.0.1/virb",
+  URL_VIRB = "http://192.168.0.1/virb",
   PROFILES = {
     VIDEO_CAR: [{gps:"whenrecording"},{recordingLED:"1"},{videoMode:"1080p"},{fieldOfView:"ultraZoom"},{videoLoop:"30"},{microphone:"1"},{stabilization:"1"},{rotation:"1"}],
     VIDEO_NORMAL: [],
     TIMELAPSE_VIDEO: [{gps:"off"},{recordingLED:"0"},{videoMode:"1080p"},{fieldOfView:"ultraZoom"},{videoLoop:"0"},{microphone:"0"},{"imageSize":"4664x3496"},{stabilization:"0"},{rotation:"1"}],
     TIMELAPSE_PHOTO: []
   },
-  WATCH_STATUS_PERIOD = 1352,
-  WATCH_STATUS_INTERVALID = null
+  WATCH_STATUS_INTERVAL = 1352,
+  WATCH_STATUS_INTERVAL_ID = null
 ;

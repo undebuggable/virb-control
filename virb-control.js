@@ -160,19 +160,19 @@ function VirbControl (_window) {
             command = e.detail
         ;
         xhrFeatures.addEventListener(EVENT_STATE_CHANGE, onStateChangeSet, false);
-        xhrFeatures.open(HTTP_METHOD_DEFAULT, URL, true);
+        xhrFeatures.open(HTTP_METHOD_DEFAULT, URL_VIRB, true);
         xhrFeatures.setRequestHeader(HTTP_CONTENT_TYPE, MIME_JSON);
         xhrFeatures.send(JSON.stringify(command));
     };
     function requestGet (command) {
         var xhrFeatures = new XMLHttpRequest();
         xhrFeatures.addEventListener(EVENT_STATE_CHANGE, onStateChangeGet, false);
-        xhrFeatures.open(HTTP_METHOD_DEFAULT, URL, true);
+        xhrFeatures.open(HTTP_METHOD_DEFAULT, URL_VIRB, true);
         xhrFeatures.setRequestHeader(HTTP_CONTENT_TYPE, MIME_JSON);
         xhrFeatures.send(JSON.stringify(command));
     }
     function watchStatus() {
-        xhrStatus.open(HTTP_METHOD_DEFAULT, URL, true);
+        xhrStatus.open(HTTP_METHOD_DEFAULT, URL_VIRB, true);
         xhrStatus.setRequestHeader(HTTP_CONTENT_TYPE, MIME_JSON);
         xhrStatus.send(JSON.stringify(COMMAND.STATUS));
     };
@@ -191,7 +191,7 @@ function VirbControl (_window) {
     var window = _window;
     function onWindowLoad () {
         var virbControl = new VirbControl(window);
-        WATCH_STATUS_INTERVALID = setInterval(virbControl.watchStatus, WATCH_STATUS_PERIOD);
+        WATCH_STATUS_INTERVAL_ID = setInterval(virbControl.watchStatus, WATCH_STATUS_INTERVAL);
     };
     (function init () {
         window.addEventListener(EVENT_LOAD, onWindowLoad);

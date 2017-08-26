@@ -6,7 +6,6 @@ function VirbControlForm (_window) {
         elemForm = document.getElementById(ID.FORM),
         elemOnoff = elemForm.querySelector('#'+ID.DEVICE_ONOFF),
         elemFeatures = elemForm.querySelector('#'+ID.ELEM_DEVICE_MULTIOPTION)
-        // _bindOnInputClick = this.onInputClick.bind(this)
     ;
     function disableAllInputs (isDisabled) {
         var inputs = document.getElementsByTagName('input');
