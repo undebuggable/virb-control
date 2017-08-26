@@ -1,11 +1,13 @@
-function VirbControl () {
+function VirbControl (_window) {
     var
+        window = _window,
+        document = window.document,
         publicInterface = {},
         statusTrack = [],
         isDetecting = true,
         xhrStatus = new XMLHttpRequest(),
-        virbControlForm = new VirbControlForm(document.getElementById(ID.FORM)),
-        virbControlStatus = new VirbControlStatus(document)
+        virbControlForm = new VirbControlForm(window),
+        virbControlStatus = new VirbControlStatus(window)
     ;
     function removeEventListeners () {
         var inputs = document.getElementsByTagName('input');
@@ -14,8 +16,8 @@ function VirbControl () {
             function (input) {
                 //Remove event listeners only from dynamically created inputs
                 if (input.type == 'button') return;
-                input.removeEventListener(EVENT_CLICK, virbControlForm._bindOnInputClick, false);
-                input.removeEventListener(EVENT_TAP, virbControlForm._bindOnInputClick, false);
+                input.removeEventListener(EVENT_CLICK, virbControlForm.onInputClick, false);
+                input.removeEventListener(EVENT_TAP, virbControlForm.onInputClick, false);
             }
         );
     };
@@ -49,8 +51,8 @@ function VirbControl () {
                     Array.prototype.forEach.call(
                         document.getElementsByTagName('input'),
                         function (input) {
-                            input.addEventListener(EVENT_CLICK, virbControlForm._bindOnInputClick, false);
-                            input.addEventListener(EVENT_TAP, virbControlForm._bindOnInputClick, false);
+                            input.addEventListener(EVENT_CLICK, virbControlForm.onInputClick, false);
+                            input.addEventListener(EVENT_TAP, virbControlForm.onInputClick, false);
                         });
                     requestGet(COMMAND.INFO);
                     requestGet(COMMAND.PREVIEW);
@@ -179,18 +181,19 @@ function VirbControl () {
             watchStatus: watchStatus,
             xhrStatus: xhrStatus
         };
-        window.document.addEventListener(EVENT_INPUT_CLICK, requestSet);
-        window.document.addEventListener(EVENT_EXPORT_HISTORY, exportStatusHistory);
+        document.addEventListener(EVENT_INPUT_CLICK, requestSet);
+        document.addEventListener(EVENT_EXPORT_HISTORY, exportStatusHistory);
         xhrStatus.addEventListener(EVENT_STATE_CHANGE, onStateChangeStatus, false);
     })();
     return publicInterface;
 };
-(function init () {
+(function init (_window) {
+    var window = _window;
     function onWindowLoad () {
-        var virbControl = new VirbControl();
+        var virbControl = new VirbControl(window);
         WATCH_STATUS_INTERVALID = setInterval(virbControl.watchStatus, WATCH_STATUS_PERIOD);
     };
     (function init () {
         window.addEventListener(EVENT_LOAD, onWindowLoad);
     })();
-})();
+})(window);

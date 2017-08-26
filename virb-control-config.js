@@ -33,8 +33,7 @@ Ultra Zoom: 90 degrees
   EVENT_LOAD = 'load',
 
   EXCEPTION = {
-    FORM_NOT_FOUND: 'The HTML form not found',
-    DOCUMENT_NOT_FOUND: 'The HTML document not found'
+    WINDOW_NOT_FOUND: 'The browser window not found'
   },
   ID = {
     FORM: 'virb-control-form',

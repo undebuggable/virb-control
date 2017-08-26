@@ -1,10 +1,10 @@
-function VirbControlStatus (_elemDocument) {
-    if (!_elemDocument) {
-        throw new Error(EXCEPTION.DOCUMENT_NOT_FOUND);
+function VirbControlStatus (_window) {
+    if (!_window) {
+        throw new Error(EXCEPTION.WINDOW_NOT_FOUND);
     } else {
         var
             self = this,
-            elemDocument = _elemDocument
+            elemDocument = _window.document
         ;
         self.elemDocument = elemDocument;
         self.elemStatus = elemDocument.querySelector('#' + ID.ELEM_DEVICE_STATUS);
@@ -13,9 +13,9 @@ function VirbControlStatus (_elemDocument) {
     };
 }
 VirbControlStatus.prototype.clear = function () {
-    this.elemStatus.innerHTML = '';
-    this.elemPreview.innerHTML = '';
-    this.elemInfo.innerHTML = '';
+    [this.elemStatus, this.elemPreview, this.elemInfo].forEach(function (elem) {
+        while (elem.childNodes.length) elem.removeChild(elem.firstChild);
+    });
     this.elemStatus.textContent = UI.DETECTING;
 };
 VirbControlStatus.prototype.renderConfigurationFeatureUI = function (feature, elemParent) {
@@ -38,17 +38,17 @@ VirbControlStatus.prototype.kilobytesToSpaceString = function (kib) {
 VirbControlStatus.prototype.parseResponse = function (response) {
     var
         that = this,
-        fragment = document.createDocumentFragment()
+        fragment = that.elemDocument.createDocumentFragment()
     ;
     switch (+response.type) {
         default:
             var
                 dd, dt, ol,
-                ol = document.createElement('ol')
+                ol = that.elemDocument.createElement('ol')
             ;
             Object.keys(response).forEach(function (key) {
-                dt = document.createElement('dt');
-                dd = document.createElement('dd');
+                dt = that.elemDocument.createElement('dt');
+                dd = that.elemDocument.createElement('dd');
                 dt.textContent = key;
                 switch (key) {
                     case KEY.STATUS_SPACE_AVAILABLE:
