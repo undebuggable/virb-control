@@ -64,7 +64,7 @@ function VirbControl (_window) {
                     );
 
                     //Don't overwhelm the camera...
-                    //[FIXME] Make these calls synchronous i.e. invoke the next one after the previous one is completed
+                    //[FIXME] Make these calls synchronous i.e. invoke the next one after the previous one is completed, e.g. use Fetch API
                     setTimeout(requestGet.bind({'virbCommand': COMMAND.INFO}), 50);
                     setTimeout(requestGet.bind({'virbCommand': COMMAND.PREVIEW}), 350);
                     setTimeout(requestGet.bind({'virbCommand': COMMAND.FEATURES}), 650);
