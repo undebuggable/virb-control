@@ -12,8 +12,8 @@ function VirbControlForm (_window) {
         Array.prototype.forEach.call(
             inputs,
             function (input) {
-                !!isDisabled && input.setAttribute('disabled', 'true');
-                !isDisabled && input.removeAttribute('disabled');
+                if (!!isDisabled) input.setAttribute('disabled', 'true');
+                if (!isDisabled) input.removeAttribute('disabled');
             });
     }
     function showAllFieldsets (isVisible) {
@@ -38,7 +38,7 @@ function VirbControlForm (_window) {
                     elemOnoff : null
             )
         );
-        elemParent && elemParent.appendChild(parseResponse(feature));
+        if (elemParent) elemParent.appendChild(parseResponse(feature));
     }
     function virbControlDispatchEvent (eventName, eventObject) {
         var eventCustom = new CustomEvent(eventName, {detail: eventObject});
@@ -72,7 +72,7 @@ function VirbControlForm (_window) {
                         function (radio) {
                             return radio.checked;
                         })[0].value
-                );
+                );// jshint ignore:line
                 console.log('Controlling the device\t' + JSON.stringify(controlCommand));
                 virbControlDispatchEvent(EVENT_INPUT_CLICK, controlCommand);
                 disableAllInputs(true);
@@ -120,7 +120,7 @@ function VirbControlForm (_window) {
                     radio.setAttribute('name', response.feature);
                     radio.addEventListener(EVENT_CLICK, onInputClick, false);
                     radio.addEventListener(EVENT_TAP, onInputClick, false);
-                    (optionName == response.value) && radio.setAttribute('checked', 'true');
+                    if (optionName == response.value) radio.setAttribute('checked', 'true');
                     label.textContent = optionName.concat(
                         KEY.FEATURE_SUMMARIES in response ?
                         ' (' + response[KEY.FEATURE_SUMMARIES][index] + ')'
@@ -143,7 +143,7 @@ function VirbControlForm (_window) {
                 checkbox.setAttribute('type', 'checkbox');
                 checkbox.setAttribute('id', response.feature);
                 checkbox.setAttribute('name', response.feature);
-                (response.value == response.enabled) && checkbox.setAttribute('checked', 'true');
+                if (response.value == response.enabled) checkbox.setAttribute('checked', 'true');
                 checkbox.setAttribute('value', response.feature);
                 checkbox.addEventListener(EVENT_CLICK, onInputClick, false);
                 checkbox.addEventListener(EVENT_TAP, onInputClick, false);

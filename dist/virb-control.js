@@ -107,8 +107,8 @@ Ultra Zoom: 90 degrees
         Array.prototype.forEach.call(
             inputs,
             function (input) {
-                !!isDisabled && input.setAttribute('disabled', 'true');
-                !isDisabled && input.removeAttribute('disabled');
+                if (!!isDisabled) input.setAttribute('disabled', 'true');
+                if (!isDisabled) input.removeAttribute('disabled');
             });
     }
     function showAllFieldsets (isVisible) {
@@ -118,7 +118,7 @@ Ultra Zoom: 90 degrees
             function (fieldset) {
                 fieldset.style.display = !!isVisible ? 'block' : 'none';
             }
-        )
+        );
     }
     function clear () {
         [elemOnoff, elemFeatures].forEach(function (elem) {
@@ -133,7 +133,7 @@ Ultra Zoom: 90 degrees
                     elemOnoff : null
             )
         );
-        elemParent && elemParent.appendChild(parseResponse(feature));
+        if (elemParent) elemParent.appendChild(parseResponse(feature));
     }
     function virbControlDispatchEvent (eventName, eventObject) {
         var eventCustom = new CustomEvent(eventName, {detail: eventObject});
@@ -167,7 +167,7 @@ Ultra Zoom: 90 degrees
                         function (radio) {
                             return radio.checked;
                         })[0].value
-                );
+                );// jshint ignore:line
                 console.log('Controlling the device\t' + JSON.stringify(controlCommand));
                 virbControlDispatchEvent(EVENT_INPUT_CLICK, controlCommand);
                 disableAllInputs(true);
@@ -177,16 +177,16 @@ Ultra Zoom: 90 degrees
         } else {
             if (elemTargetType == 'checkbox') {
                 value = +elemTargetChecked + '';
-            };
+            }
             if (elemTargetType == 'radio') {
                 value = elemTargetValue;
-            };
+            }
             COMMAND.UPDATE.feature = elemTargetName;
             COMMAND.UPDATE.value = value;
             console.log('Updating the feature\t' + JSON.stringify(COMMAND.UPDATE));
             virbControlDispatchEvent(EVENT_INPUT_CLICK, COMMAND.UPDATE);
             disableAllInputs(true);
-        };
+        }
     }
     function parseResponse (response) {
         var
@@ -197,13 +197,15 @@ Ultra Zoom: 90 degrees
         switch (+response.type) {
             case 1:
                 var
-                    radio, label, paragraph,
                     fieldset = document.createElement('fieldset'),
                     legend = document.createElement('legend')
                 ;
                 legend.textContent = response.feature;
                 fieldset.appendChild(legend);
                 response.options.forEach(function (optionName, index) {
+                    var
+                        label, paragraph, radio
+                    ;
                     paragraph = document.createElement('p');
                     radio = document.createElement('input');
                     label = document.createElement('label');
@@ -213,7 +215,7 @@ Ultra Zoom: 90 degrees
                     radio.setAttribute('name', response.feature);
                     radio.addEventListener(EVENT_CLICK, onInputClick, false);
                     radio.addEventListener(EVENT_TAP, onInputClick, false);
-                    (optionName == response.value) && radio.setAttribute('checked', 'true');
+                    if (optionName == response.value) radio.setAttribute('checked', 'true');
                     label.textContent = optionName.concat(
                         KEY.FEATURE_SUMMARIES in response ?
                         ' (' + response[KEY.FEATURE_SUMMARIES][index] + ')'
@@ -236,7 +238,7 @@ Ultra Zoom: 90 degrees
                 checkbox.setAttribute('type', 'checkbox');
                 checkbox.setAttribute('id', response.feature);
                 checkbox.setAttribute('name', response.feature);
-                (response.value == response.enabled) && checkbox.setAttribute('checked', 'true');
+                if (response.value == response.enabled) checkbox.setAttribute('checked', 'true');
                 checkbox.setAttribute('value', response.feature);
                 checkbox.addEventListener(EVENT_CLICK, onInputClick, false);
                 checkbox.addEventListener(EVENT_TAP, onInputClick, false);
@@ -246,13 +248,13 @@ Ultra Zoom: 90 degrees
                 paragraph.appendChild(label);
                 fragment.appendChild(paragraph);
                 break;
-        };
+        }
         return fragment;
     }
     (function init () {
         if (!_window) {
             throw new Error(EXCEPTION.WINDOW_NOT_FOUND);
-        };
+        }
         publicInterface = {
             // _bindOnInputClick: _bindOnInputClick,
             clear: clear,
@@ -263,7 +265,7 @@ Ultra Zoom: 90 degrees
         };
     })();
     return publicInterface;
-};;function VirbControlStatus (_window) {
+};function VirbControlStatus (_window) {
     if (!_window) {
         throw new Error(EXCEPTION.WINDOW_NOT_FOUND);
     } else {
@@ -275,31 +277,31 @@ Ultra Zoom: 90 degrees
         self.elemStatus = elemDocument.querySelector('#' + ID.ELEM_DEVICE_STATUS);
         self.elemInfo = elemDocument.querySelector('#' + ID.ELEM_DEVICE_INFO);
         self.elemPreview = elemDocument.querySelector('#' + ID.ELEM_DEVICE_PREVIEW);
-    };
+    }
 }
 VirbControlStatus.prototype.clear = function () {
     [this.elemStatus, this.elemPreview, this.elemInfo].forEach(function (elem) {
         while (elem.childNodes.length) elem.removeChild(elem.firstChild);
     });
     this.elemStatus.textContent = UI.DETECTING;
-}
+};
 VirbControlStatus.prototype.renderConfigurationFeatureUI = function (feature, elemParent) {
     elemParent.appendChild(this.parseResponse(feature));
-}
+};
 VirbControlStatus.prototype.secondsToTimeString = function (seconds) {
     var minutes, hours;
     hours = Math.floor(seconds/3600);
     minutes = Math.floor(seconds/60) - hours * 60;
     seconds = seconds - hours * 3600 - minutes * 60;
     return ''.concat(hours + 'h ', minutes + 'min ', seconds + 'sec');
-}
+};
 VirbControlStatus.prototype.kilobytesToSpaceString = function (kib) {
     var mib, gib;
     gib = Math.floor(kib/(1024*1024));
     mib = Math.floor(kib/1024) - gib * 1024;
     kib = kib - gib * 1024 * 1024 - mib * 1024;
     return ''.concat(gib + 'GiB ', mib + 'MiB ', kib + 'KiB');
-}
+};
 VirbControlStatus.prototype.parseResponse = function (response) {
     var
         that = this,
@@ -308,7 +310,7 @@ VirbControlStatus.prototype.parseResponse = function (response) {
     switch (+response.type) {
         default:
             var
-                dd, dt, ol,
+                dd, dt,
                 ol = that.elemDocument.createElement('ol')
             ;
             Object.keys(response).forEach(function (key) {
@@ -331,13 +333,13 @@ VirbControlStatus.prototype.parseResponse = function (response) {
                     default:
                         dd.textContent = response[key];
                         break;
-                };
+                }
                 ol.appendChild(dt);
                 ol.appendChild(dd);
             });
             fragment.appendChild(ol);
             break;
-    };
+    }
     return fragment;
 };;function VirbControl (_window) {
     var
@@ -367,20 +369,20 @@ VirbControlStatus.prototype.parseResponse = function (response) {
                 input.removeEventListener(EVENT_TAP, virbControlForm.onInputClick, false);
             }
         );
-    };
+    }
     function exportStatusHistory () {
         var csv = '';
         // debugger;
         statusTrack.forEach(function (statusItem) {
         });
         statusTrack = [];
-    };
+    }
     function detecting () {
         removeEventListeners();
         virbControlForm.clear();
         virbControlStatus.clear();
         document.body.classList.add(CSS.DETECTING);
-    };
+    }
     function onStateChangeStatus () {
         if (xhrStatus.readyState == XMLHttpRequest.DONE) {
             var
@@ -412,7 +414,7 @@ VirbControlStatus.prototype.parseResponse = function (response) {
                     setTimeout(requestGet.bind({'virbCommand': COMMAND.FEATURES}), 650);
 
                     isDetecting = false;
-                };
+                }
                 responseJSON = JSON.parse(xhrStatus.responseText);
                 responseJSON.isoTime = (new Date()).toISOString();
                 statusTrack.push(responseJSON);
@@ -422,14 +424,14 @@ VirbControlStatus.prototype.parseResponse = function (response) {
         } else {
             //detecting();
         }
-    };
+    }
     function onStateChangeGet () {
         if (this.readyState == XMLHttpRequest.DONE) {
-            console.log('onStateChangeGet\n' + this.responseText)
+            console.log('onStateChangeGet\n' + this.responseText);
             if (!this.responseText.length) {
                 NON_BLOCKING.IS_GETTING = false;
                 return;
-            };
+            }
             var
                 responseCommand,
                 response = JSON.parse(this.responseText),
@@ -473,17 +475,17 @@ VirbControlStatus.prototype.parseResponse = function (response) {
                         virbControlStatus.elemPreview.appendChild(notice);
                         break;
                 }
-            };
+            }
             NON_BLOCKING.IS_GETTING = false;
-        };
-    };
+        }
+    }
     function onStateChangeSet () {
         if (this.readyState == XMLHttpRequest.DONE) {
-            console.log('onStateChangeGet\n' + this.responseText)
+            console.log('onStateChangeGet\n' + this.responseText);
             if (!this.responseText.length) {
                 NON_BLOCKING.IS_SETTING = false;
                 return;
-            };
+            }
             var
                 responseCommand,
                 response = JSON.parse(this.responseText),
@@ -494,11 +496,11 @@ VirbControlStatus.prototype.parseResponse = function (response) {
             switch (+response.result) {
                 case 0:
                     //debugger;
-                    alert(UI.FAILED_TO_UPDATE)
+                    alert(UI.FAILED_TO_UPDATE);
                     break;
                 case 1:
                     break;
-            };
+            }
             //Assume only two properties: "result" and one more - command specific
             responseKeys.splice(responseKeys.indexOf('result'), 1);
             responseCommand = responseKeys[0];
@@ -512,10 +514,10 @@ VirbControlStatus.prototype.parseResponse = function (response) {
                     });
                     virbControlForm.showAllFieldsets(true);
                     break;
-            };
+            }
             NON_BLOCKING.IS_SETTING = false;
-        };
-    };
+        }
+    }
     function requestSet (e) {
         // if (NON_BLOCKING.IS_GETTING || NON_BLOCKING.IS_SETTING) return;
         NON_BLOCKING.IS_SETTING = true;
@@ -527,7 +529,7 @@ VirbControlStatus.prototype.parseResponse = function (response) {
         xhrFeatures.open(HTTP_METHOD_DEFAULT, URL_VIRB, true);
         xhrFeatures.setRequestHeader(HTTP_CONTENT_TYPE, MIME_JSON);
         xhrFeatures.send(JSON.stringify(command));
-    };
+    }
     function requestGet (command) {
         // if (NON_BLOCKING.IS_GETTING || NON_BLOCKING.IS_SETTING) return;
         NON_BLOCKING.IS_GETTING = true;
@@ -543,7 +545,7 @@ VirbControlStatus.prototype.parseResponse = function (response) {
         xhrStatus.open(HTTP_METHOD_DEFAULT, URL_VIRB, true);
         xhrStatus.setRequestHeader(HTTP_CONTENT_TYPE, MIME_JSON);
         xhrStatus.send(JSON.stringify(COMMAND.STATUS));
-    };
+    }
     (function () {
         publicInterface = {
             // watchStatus: watchStatus,
@@ -555,12 +557,12 @@ VirbControlStatus.prototype.parseResponse = function (response) {
         WATCH_STATUS_INTERVAL_ID = setInterval(watchStatus, WATCH_STATUS_INTERVAL);
     })();
     return publicInterface;
-};
+}
 (function init (_window) {
     var window = _window;
     function onWindowLoad () {
         var virbControl = new VirbControl(window);
-    };
+    }
     (function init () {
         window.addEventListener(EVENT_LOAD, onWindowLoad);
     })();
