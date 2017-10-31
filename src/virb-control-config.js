@@ -43,41 +43,41 @@ Ultra Zoom: 90 degrees
   FETCH_INIT = {
     method: HTTP_METHOD_DEFAULT,
     headers: FETCH_HEADERS,
-    mode: 'cors',
+    //mode: 'cors',
     cache: 'default'
   },
   FETCH_INIT_STATUS = {
     method: HTTP_METHOD_DEFAULT,
     headers: FETCH_HEADERS,
-    mode: 'cors',
+    //mode: 'cors',
     cache: 'default',
     body: JSON.stringify(COMMAND.STATUS)
   },
   FETCH_INIT_INFO = {
     method: HTTP_METHOD_DEFAULT,
     headers: FETCH_HEADERS,
-    mode: 'cors',
+    //mode: 'cors',
     cache: 'default',
     body: JSON.stringify(COMMAND.INFO)
   },
   FETCH_INIT_PREVIEW = {
     method: HTTP_METHOD_DEFAULT,
     headers: FETCH_HEADERS,
-    mode: 'cors',
+    //mode: 'cors',
     cache: 'default',
     body: JSON.stringify(COMMAND.PREVIEW)
   },
   FETCH_INIT_FEATURES = {
     method: HTTP_METHOD_DEFAULT,
     headers: FETCH_HEADERS,
-    mode: 'cors',
+    //mode: 'cors',
     cache: 'default',
     body: JSON.stringify(COMMAND.FEATURES)
   },
   FETCH_INIT_SET = {
     method: HTTP_METHOD_DEFAULT,
     headers: FETCH_HEADERS,
-    mode: 'cors',
+    //mode: 'cors',
     cache: 'default'
     //body: JSON.stringify(COMMAND.FEATURES)
   },

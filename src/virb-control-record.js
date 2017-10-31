@@ -24,15 +24,13 @@ function VirbControlRecord (_window) {
     function onInputClick (e) {
         // debugger;
         var
-            value, controlCommand,
+            controlCommand,
             elemTarget = e.target,
             elemTargetType = elemTarget.type,
-            elemTargetChecked = elemTarget.checked,
-            elemTargetValue = elemTarget.value,
             //Name of the feature
             elemTargetName = elemTarget.name
         ;
-        debugger;
+        //debugger;
         if (elemTargetType == 'button') {
             if (
                 ~[
@@ -56,18 +54,6 @@ function VirbControlRecord (_window) {
             } else if (elemTargetName == 'export-status') {
                 virbControlDispatchEvent(EVENT_EXPORT_HISTORY);
             }
-        } else {
-            if (elemTargetType == 'checkbox') {
-                value = +elemTargetChecked + '';
-            }
-            if (elemTargetType == 'radio') {
-                value = elemTargetValue;
-            }
-            COMMAND.UPDATE.feature = elemTargetName;
-            COMMAND.UPDATE.value = value;
-            console.log('Updating the feature\t' + JSON.stringify(COMMAND.UPDATE));
-            virbControlDispatchEvent(EVENT_INPUT_CLICK, COMMAND.UPDATE);
-            disableAllInputs(true);
         }
     }
     (function init () {

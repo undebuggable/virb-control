@@ -42,14 +42,23 @@ function VirbControl (_window) {
     }
     function exportStatusHistory () {
         var csv = '';
-        // debugger;
+         //debugger;
         statusTrack.forEach(function (statusItem) {
         });
+        window.open(
+            'data:text/html;charset=UTF-8,'.concat(
+                encodeURIComponent(JSON.stringify(statusTrack, null, 2))
+            ),
+            '_blank',
+            'location=no,height=0,width=0,scrollbars=no,status=no'
+        );
         statusTrack = [];
     }
     function detecting () {
+        isDetecting = true;
         eventListenersRemove();
         virbControlForm.clear();
+        virbControlForm.showAllFieldsets(false);
         virbControlStatus.clear();
         document.body.classList.add(CSS.DETECTING);
     }
@@ -201,13 +210,12 @@ function VirbControl (_window) {
     //    xhrFeatures.send(JSON.stringify(command));
     //}
     function requestSet (e) {
-        debugger;
+        //debugger;
         // if (NON_BLOCKING.IS_GETTING || NON_BLOCKING.IS_SETTING) return;
         NON_BLOCKING.IS_SETTING = true;
         var
             requestSet,
             command = e.detail
-
         ;
         FETCH_INIT_SET.body = JSON.stringify(command);
         requestSet = new Request(URL_VIRB, FETCH_INIT_SET);
@@ -230,9 +238,11 @@ function VirbControl (_window) {
             }
         }).then(function(responseJson) {
             NON_BLOCKING.IS_SETTING = false;
+            virbControlRecord.disableAllInputs(false);
             parseResponseConfiguration(responseJson);
         }).catch(function(error) {
             NON_BLOCKING.IS_SETTING = false;
+            virbControlRecord.disableAllInputs(false);
             console.log('requestSet catch\t' + error.message);
         });
     }
@@ -254,9 +264,11 @@ function VirbControl (_window) {
     //    xhrStatus.send(JSON.stringify(COMMAND.STATUS));
     //}
     function watchStatus() {
+        //debugger;
         if (NON_BLOCKING.IS_GETTING || NON_BLOCKING.IS_SETTING) return;
         var requestStatus = new Request(URL_VIRB, FETCH_INIT_STATUS);
         fetch(requestStatus).then(function(response) {
+            //debugger;
             if (response.ok) {
                 var
                     contentType = response.headers.get(HTTP_CONTENT_TYPE)
@@ -273,9 +285,16 @@ function VirbControl (_window) {
                 console.log('watchStatus\t' + '0000000000000000');
             }
         }).then(function(responseJson) {
+            //debugger;
+            if (isDetecting) {
+                document.body.classList.remove(CSS.DETECTING);
+                fetchAll();
+                isDetecting = false;
+            }
             parseResponseStatus(responseJson);
-            fetchAll();
         }).catch(function(error) {
+            //debugger;
+            detecting();
             console.log('watchStatus catch\t' + error.message);
         });
     }
@@ -326,6 +345,7 @@ function VirbControl (_window) {
         }
     }
     function fetchAll() {
+        NON_BLOCKING.IS_GETTING = true;
         var
             requestFeatures = new Request(URL_VIRB, FETCH_INIT_FEATURES),
             requestInfo = new Request(URL_VIRB, FETCH_INIT_INFO),
@@ -350,13 +370,16 @@ function VirbControl (_window) {
                     }
                 })
             ).then(function(responseAllJsons) {
+                NON_BLOCKING.IS_GETTING = false;
                 responseAllJsons.forEach(function (responseJson) {
                     parseResponseConfiguration(responseJson);
                 });
             }).catch(function (error) {
+                NON_BLOCKING.IS_GETTING = false;
                 console.log('fetchAll catch 11111111111111111\t' + error.message);
             })
         }).catch(function (error) {
+            NON_BLOCKING.IS_GETTING = false;
             console.log('fetchAll catch 00000000000000\t' + error.message);
         });
     }
@@ -368,6 +391,7 @@ function VirbControl (_window) {
         document.addEventListener(EVENT_INPUT_CLICK, requestSet);
         document.addEventListener(EVENT_EXPORT_HISTORY, exportStatusHistory);
         //xhrStatus.addEventListener(EVENT_STATE_CHANGE, onStateChangeStatus, false);
+        detecting();
         WATCH_STATUS_INTERVAL_ID = setInterval(watchStatus, WATCH_STATUS_INTERVAL);
     })();
     return publicInterface;
