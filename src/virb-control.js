@@ -12,6 +12,7 @@ function VirbControl (_window) {
         statusTrack = [],
         isDetecting = true,
         //xhrStatus = new XMLHttpRequest(),
+        virbControlRecord = new VirbControlRecord(window),
         virbControlForm = new VirbControlForm(window),
         virbControlStatus = new VirbControlStatus(window)
     ;
