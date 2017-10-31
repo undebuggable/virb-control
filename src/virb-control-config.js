@@ -74,6 +74,13 @@ Ultra Zoom: 90 degrees
     cache: 'default',
     body: JSON.stringify(COMMAND.FEATURES)
   },
+  FETCH_INIT_SET = {
+    method: HTTP_METHOD_DEFAULT,
+    headers: FETCH_HEADERS,
+    mode: 'cors',
+    cache: 'default'
+    //body: JSON.stringify(COMMAND.FEATURES)
+  },
 
   EVENT_EXPORT_HISTORY = 'virb-control-export-history',
   EVENT_INPUT_CLICK = 'virb-control-input-click',

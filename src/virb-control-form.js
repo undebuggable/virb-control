@@ -55,7 +55,7 @@ function VirbControlForm (_window) {
             //Name of the feature
             elemTargetName = elemTarget.name
         ;
-        //debugger;
+        debugger;
         if (elemTargetType == 'button') {
             if (
                 ~[
