@@ -13,7 +13,11 @@ function VirbControl (_window) {
         isDetecting = true,
         xhrStatus = new XMLHttpRequest(),
         virbControlForm = new VirbControlForm(window),
-        virbControlStatus = new VirbControlStatus(window)
+        virbControlStatus = new VirbControlStatus(window),
+        requestStatus = new Request(URL_VIRB, FETCH_INIT_STATUS),
+        requestFeatures = new Request(URL_VIRB, FETCH_INIT_FEATURES),
+        requestInfo = new Request(URL_VIRB, FETCH_INIT_INFO),
+        requestPreview = new Request(URL_VIRB, FETCH_INIT_PREVIEW)
     ;
     function removeEventListeners () {
         var inputs = document.getElementsByTagName('input');
@@ -197,11 +201,98 @@ function VirbControl (_window) {
         xhrFeatures.setRequestHeader(HTTP_CONTENT_TYPE, MIME_JSON);
         xhrFeatures.send(JSON.stringify(command));
     }
+    //function watchStatus() {
+    //    if (NON_BLOCKING.IS_GETTING || NON_BLOCKING.IS_SETTING) return;
+    //    xhrStatus.open(HTTP_METHOD_DEFAULT, URL_VIRB, true);
+    //    xhrStatus.setRequestHeader(HTTP_CONTENT_TYPE, MIME_JSON);
+    //    xhrStatus.send(JSON.stringify(COMMAND.STATUS));
+    //}
     function watchStatus() {
-        if (NON_BLOCKING.IS_GETTING || NON_BLOCKING.IS_SETTING) return;
-        xhrStatus.open(HTTP_METHOD_DEFAULT, URL_VIRB, true);
-        xhrStatus.setRequestHeader(HTTP_CONTENT_TYPE, MIME_JSON);
-        xhrStatus.send(JSON.stringify(COMMAND.STATUS));
+        fetch(requestStatus).then(function(response) {
+            if (response.ok) {
+                var
+                    contentType = response.headers.get(HTTP_CONTENT_TYPE),
+                    contentLength = +response.headers.get(HTTP_CONTENT_LENGTH)
+                ;
+                if(
+                    contentType && contentType.includes(MIME_JSON)
+                    //&& contentLength > 0
+                ) {
+                    return response.json();
+                }
+            }
+        }).then(function(responseJson) {
+            virbControlStatus.renderConfigurationFeatureUI(responseJson, virbControlStatus.elemStatus);
+            fetchAll();
+        }).catch(function(error) {
+            //debugger;
+        });
+    }
+    function fetchAll() {
+        Promise.all([
+            fetch(requestInfo),
+            fetch(requestPreview),
+            fetch(requestFeatures)
+        ]).then(function (responsePromises) {
+            Promise.all(
+                responsePromises.map(function(responsePromiseItem) {
+                    var contentType = responsePromiseItem.headers.get(HTTP_CONTENT_TYPE);
+                    if (
+                        responsePromiseItem.ok &&
+                        contentType &&
+                        contentType.includes(MIME_JSON)
+                    ) {
+                        return responsePromiseItem.json();
+                    }
+                })
+            ).then(function(responseAllJsons) {
+                responseAllJsons.forEach(function (responseJson) {
+                    if (+responseJson.result == 1) {
+
+
+                        if (RESPONSE.FEATURES in responseJson) {
+                            removeEventListeners();
+                            virbControlForm.clear();
+                            responseJson[RESPONSE.FEATURES].forEach(function (feature) {
+                                virbControlForm.renderConfigurationFeatureUI(feature);
+                            });
+                            virbControlForm.showAllFieldsets(true);
+                        }
+                        if (RESPONSE.INFO in responseJson) {
+                            removeEventListeners();
+                            virbControlStatus.elemInfo.innerHTML = '';
+                            responseJson[RESPONSE.INFO].forEach(function (feature) {
+                                virbControlStatus.renderConfigurationFeatureUI(feature, virbControlStatus.elemInfo);
+                            });
+                        }
+                        if (RESPONSE.PREVIEW in responseJson) {
+                            removeEventListeners();
+                            virbControlStatus.elemPreview.innerHTML = '';
+                            var
+                                previewUrl = document.createElement('a'),
+                                notice = document.createElement('span')
+                            ;
+                            previewUrl.title = responseJson[RESPONSE.PREVIEW];
+                            previewUrl.textContent = responseJson[RESPONSE.PREVIEW];
+                            previewUrl.href = responseJson[RESPONSE.PREVIEW];
+                            virbControlStatus.elemPreview.appendChild(previewUrl);
+                            notice.textContent = ' (' + UI.STREAMING_NOTICE + ')';
+                            virbControlStatus.elemPreview.appendChild(notice);
+                        }
+
+
+                    }
+                });
+            })
+        }).catch(function (error) {
+            debugger;
+        })
+        //Don't overwhelm the camera...
+        //[FIXME] Make these calls synchronous
+        // i.e. invoke the next one after the previous one is completed, e.g. use Fetch API
+        //setTimeout(requestGet.bind({'virbCommand': COMMAND.INFO}), 50);
+        //setTimeout(requestGet.bind({'virbCommand': COMMAND.PREVIEW}), 350);
+        //setTimeout(requestGet.bind({'virbCommand': COMMAND.FEATURES}), 650);
     }
     (function () {
         publicInterface = {

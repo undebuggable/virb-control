@@ -22,8 +22,58 @@ Ultra Zoom: 90 degrees
   HTTP_METHOD_POST = 'POST',
   HTTP_METHOD_DEFAULT = HTTP_METHOD_POST,
   HTTP_CONTENT_TYPE = 'Content-Type',
+  HTTP_CONTENT_LENGTH = 'Content-Length',
+  COMMAND = {
+    FEATURES: {"command":"features"},
+//FEATURES: "mediaDirList",
+    UPDATE: {"command":"updateFeature","feature":null,"value":null},
+    RECORD_START: {"command":"startRecording"},
+    RECORD_STOP: {"command":"stopRecording"},
+    STATUS: {"command":"status"},
+    INFO: {"command":"deviceInfo"},
+    PREVIEW: {"command":"livePreview","streamType":"rtp"},
+    PICTURE: {"command":"snapPicture","selfTimer": 0}
+  },
 
   MIME_JSON = 'application/json',
+
+  FETCH_HEADERS = new Headers({
+    'Content-Type': MIME_JSON
+  }),
+  FETCH_INIT = {
+    method: HTTP_METHOD_DEFAULT,
+    headers: FETCH_HEADERS,
+    mode: 'cors',
+    cache: 'default'
+  },
+  FETCH_INIT_STATUS = {
+    method: HTTP_METHOD_DEFAULT,
+    headers: FETCH_HEADERS,
+    mode: 'cors',
+    cache: 'default',
+    body: JSON.stringify(COMMAND.STATUS)
+  },
+  FETCH_INIT_INFO = {
+    method: HTTP_METHOD_DEFAULT,
+    headers: FETCH_HEADERS,
+    mode: 'cors',
+    cache: 'default',
+    body: JSON.stringify(COMMAND.INFO)
+  },
+  FETCH_INIT_PREVIEW = {
+    method: HTTP_METHOD_DEFAULT,
+    headers: FETCH_HEADERS,
+    mode: 'cors',
+    cache: 'default',
+    body: JSON.stringify(COMMAND.PREVIEW)
+  },
+  FETCH_INIT_FEATURES = {
+    method: HTTP_METHOD_DEFAULT,
+    headers: FETCH_HEADERS,
+    mode: 'cors',
+    cache: 'default',
+    body: JSON.stringify(COMMAND.FEATURES)
+  },
 
   EVENT_EXPORT_HISTORY = 'virb-control-export-history',
   EVENT_INPUT_CLICK = 'virb-control-input-click',
@@ -61,17 +111,6 @@ Ultra Zoom: 90 degrees
     STREAMING_NOTICE: 'Starting the streaming will stop recording and repeated pictures',
     DETECTING: 'Detecting the camera...',
     FAILED_TO_UPDATE: 'Failed to update the command'
-  },
-  COMMAND = {
-    FEATURES: {"command":"features"},
-//FEATURES: "mediaDirList",
-    UPDATE: {"command":"updateFeature","feature":null,"value":null},
-    RECORD_START: {"command":"startRecording"},
-    RECORD_STOP: {"command":"stopRecording"},
-    STATUS: {"command":"status"},
-    INFO: {"command":"deviceInfo"},
-    PREVIEW: {"command":"livePreview","streamType":"rtp"},
-    PICTURE: {"command":"snapPicture","selfTimer": 0}
   },
   RESPONSE = {
     FEATURES: "features",
