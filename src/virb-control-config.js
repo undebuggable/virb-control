@@ -43,41 +43,54 @@ Ultra Zoom: 90 degrees
   FETCH_INIT = {
     method: HTTP_METHOD_DEFAULT,
     headers: FETCH_HEADERS,
-    //mode: 'cors',
+
+    /*
+    Firefox
+    Necessary to enable the cors mode for Firefox
+     */
+    mode: 'cors',
+
+    /*
+    Chromium:
+     virb-control.html:1 Fetch API cannot load http://192.168.0.1/virb. Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'null' is therefore not allowed access. If an opaque response serves your needs, set the request's mode to 'no-cors' to fetch the resource with CORS disabled.
+     virb-control.js:123 watchStatus catch	Failed to fetch
+     */
+    //mode: 'no-cors',
+
     cache: 'default'
   },
   FETCH_INIT_STATUS = {
     method: HTTP_METHOD_DEFAULT,
     headers: FETCH_HEADERS,
-    //mode: 'cors',
+    mode: 'cors',
     cache: 'default',
     body: JSON.stringify(COMMAND.STATUS)
   },
   FETCH_INIT_INFO = {
     method: HTTP_METHOD_DEFAULT,
     headers: FETCH_HEADERS,
-    //mode: 'cors',
+    mode: 'cors',
     cache: 'default',
     body: JSON.stringify(COMMAND.INFO)
   },
   FETCH_INIT_PREVIEW = {
     method: HTTP_METHOD_DEFAULT,
     headers: FETCH_HEADERS,
-    //mode: 'cors',
+    mode: 'cors',
     cache: 'default',
     body: JSON.stringify(COMMAND.PREVIEW)
   },
   FETCH_INIT_FEATURES = {
     method: HTTP_METHOD_DEFAULT,
     headers: FETCH_HEADERS,
-    //mode: 'cors',
+    mode: 'cors',
     cache: 'default',
     body: JSON.stringify(COMMAND.FEATURES)
   },
   FETCH_INIT_SET = {
     method: HTTP_METHOD_DEFAULT,
     headers: FETCH_HEADERS,
-    //mode: 'cors',
+    mode: 'cors',
     cache: 'default'
     //body: JSON.stringify(COMMAND.FEATURES)
   },
@@ -92,7 +105,8 @@ Ultra Zoom: 90 degrees
   EVENT_LOAD = 'load',
 
   EXCEPTION = {
-    WINDOW_NOT_FOUND: 'The browser window not found'
+    WINDOW_NOT_FOUND: 'The browser window not found',
+    RESPONSE_EMPTY: 'Waiting for non-empty response'
   },
   ID = {
     FORM: 'virb-control-form',
