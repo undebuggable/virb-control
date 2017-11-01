@@ -17,8 +17,8 @@ The client opened in a web browser with default configuration will not be able t
 
 Enforce the CORS by overwriting the `Access-Control-*` HTTP headers. There are many ways to achieve it, the suggested workaround is the [CORS Everywhere add-on for Firefox](https://addons.mozilla.org/en-US/firefox/addon/cors-everywhere/).
 
-Using the client in Firefox
-=================
+#### Using the client in Firefox
+
 1. Install the CORS Everywhere add-on in the Firefox, restart the browser and ensure the add-on is activated.
 2. Connect the computer to the WiFi network emitted by the camera.
 3. Open this client in Firefox.
@@ -31,8 +31,8 @@ Run the web browser with the `--disable-web-security` flag enabled. To ensure th
 
 `chromium --incognito --disable-web-security virb-control.html`
 
-Using the client in Chrome/Chromium
-=================
+#### Using the client in Chrome/Chromium
+
 1. Ensure no instances of web browser are running.
 2. Launch the web browser from command line with the flag `--disable-web-security`.
 3. Connect the computer to the WiFi network emitted by the camera.
