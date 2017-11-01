@@ -11,12 +11,30 @@ The client opened in a web browser on a computer or other device connected to th
 Enabling the cross origin resource sharing (CORS)
 =======================
 
-The client opened in a web browser with default configuration will not be able to communicate with the local IP address `192.168.0.1` because of the same-origin policy. The workaround is to enforce the CORS by overwriting the `Access-Control-*` HTTP headers. There are many ways to achieve it, the suggested workaround is the [CORS Everywhere add-on for Firefox](https://addons.mozilla.org/en-US/firefox/addon/cors-everywhere/).
+The client opened in a web browser with default configuration will not be able to communicate with the local IP address `192.168.0.1` because of the same-origin policy. The workaround is to exceptionally run the web browser in mode with the policy disabled.
 
-Using the client
+### Firefox
+
+Enforce the CORS by overwriting the `Access-Control-*` HTTP headers. There are many ways to achieve it, the suggested workaround is the [CORS Everywhere add-on for Firefox](https://addons.mozilla.org/en-US/firefox/addon/cors-everywhere/).
+
+Using the client in Firefox
 =================
 1. Install the CORS Everywhere add-on in the Firefox, restart the browser and ensure the add-on is activated.
 2. Connect the computer to the WiFi network emitted by the camera.
 3. Open this client in Firefox.
 4. Switch on the CORS Everywhere add-on.
+5. Once the client is able to connect to the device, an interface allowing to configure available services will be displayed.
+
+### Chrome/Chromium
+
+Run the web browser with the `--disable-web-security` flag enabled. To ensure the web browser instance is launched with the flag enabled, it's necessary to kill all Chrome/Chromium processes beforehand.
+
+`chromium --incognito --disable-web-security virb-control.html`
+
+Using the client in Chrome/Chromium
+=================
+1. Ensure no instances of web browser are running.
+2. Launch the web browser from command line with the flag `--disable-web-security`.
+3. Connect the computer to the WiFi network emitted by the camera.
+4. Open this client in the web browser.
 5. Once the client is able to connect to the device, an interface allowing to configure available services will be displayed.
