@@ -72,10 +72,10 @@ function VirbControl (_window) {
                 ) {
                     return response.json();
                 } else {
-                    console.log('requestSet\t' + '0000000000000000000');
+                    console.log('requestSet\tok');
                 }
             } else {
-                console.log('requestSet\t' + '11111111111111111111');
+                console.log('requestSet\tnot ok');
             }
         }).then(function(responseJson) {
             NON_BLOCKING.IS_SETTING = false;
@@ -103,10 +103,10 @@ function VirbControl (_window) {
                 ) {
                     return response.json();
                 } else {
-                    console.log('watchStatus\t' + '22222222222222222222222');
+                    console.log('watchStatus\tok');
                 }
             } else {
-                console.log('watchStatus\t' + response.status + '\t33333333333333333333');
+                console.log('watchStatus\tnot ok\t' + response.status);
             }
         }).then(function(responseJson) {
             //debugger;
@@ -193,7 +193,7 @@ function VirbControl (_window) {
                     ) {
                         return responsePromiseItem.json();
                     } else {
-                        console.log('fetchAll\t' + '44444444444444444444');
+                        console.log('fetchAll\tnot ok');
                     }
                 })
             ).then(function(responseAllJsons) {
@@ -203,11 +203,11 @@ function VirbControl (_window) {
                 });
             }).catch(function (error) {
                 NON_BLOCKING.IS_GETTING = false;
-                console.log('fetchAll catch 5555555555555555\t' + error.message);
+                console.log('fetchAll catch\tinner\t' + error.message);
             })
         }).catch(function (error) {
             NON_BLOCKING.IS_GETTING = false;
-            console.log('fetchAll catch 6666666666666666666\t' + error.message);
+            console.log('fetchAll catch\touter\t' + error.message);
         });
     }
     (function () {
