@@ -1,4 +1,6 @@
-function VirbControlForm (_window) {
+// import CONFIG from './virb-control-config.js'
+
+export default function VirbControlForm (_window) {
     var
         publicInterface,
         window = _window,

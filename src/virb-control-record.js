@@ -1,4 +1,6 @@
-function VirbControlRecord (_window) {
+// import CONFIG from './virb-control-config.js'
+
+export default function VirbControlRecord (_window) {
     var
         publicInterface,
         window = _window,

@@ -38,3 +38,8 @@ Run the web browser with the `--disable-web-security` flag enabled. To ensure th
 3. Connect the computer to the WiFi network emitted by the camera.
 4. Open this client in the web browser.
 5. Once the client is able to connect to the device, an interface allowing to configure available services will be displayed.
+
+Enabling the ECMAScript 6 modules in Firefox
+========================
+
+This application is using native ECMAScript 6 modules. To enable the support for EC6 modules in older versions of Firefox, go to the browser settings (`about:config`) and set the settings item `dom.moduleScripts.enabled` to `true`.

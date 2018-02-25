@@ -1,4 +1,6 @@
-function VirbControlStatus (_window) {
+// import CONFIG from './virb-control-config.js'
+
+export default function VirbControlStatus (_window) {
     if (!_window) {
         throw new Error(EXCEPTION.WINDOW_NOT_FOUND);
     } else {

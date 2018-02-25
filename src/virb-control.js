@@ -1,4 +1,9 @@
-function VirbControl (_window) {
+// import CONFIG from './virb-control-config.js'
+import VirbControlRecord from './virb-control-record.js'
+import VirbControlForm from './virb-control-form.js'
+import VirbControlStatus from './virb-control-status.js'
+
+export default function VirbControl (_window) {
     var
         WATCH_STATUS_INTERVAL = 1352,
         WATCH_STATUS_INTERVAL_ID = null,
