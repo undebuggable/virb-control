@@ -1,4 +1,4 @@
-// import CONFIG from './virb-control-config.js'
+import CONFIG from './virb-control-config.js'
 import VirbControl from './virb-control.js'
 
 (function init (_window) {
@@ -7,6 +7,6 @@ import VirbControl from './virb-control.js'
         var virbControl = new VirbControl(window);
     }
     (function init () {
-        window.addEventListener(EVENT_LOAD, onWindowLoad);
+        window.addEventListener(CONFIG.EVENT_LOAD, onWindowLoad);
     })();
 })(window);

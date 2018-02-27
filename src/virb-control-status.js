@@ -1,24 +1,24 @@
-// import CONFIG from './virb-control-config.js'
+import CONFIG from './virb-control-config.js'
 
 export default function VirbControlStatus (_window) {
     if (!_window) {
-        throw new Error(EXCEPTION.WINDOW_NOT_FOUND);
+        throw new Error(CONFIG.EXCEPTION.WINDOW_NOT_FOUND);
     } else {
         var
             self = this,
             elemDocument = _window.document
         ;
         self.elemDocument = elemDocument;
-        self.elemStatus = elemDocument.querySelector('#' + ID.ELEM_DEVICE_STATUS);
-        self.elemInfo = elemDocument.querySelector('#' + ID.ELEM_DEVICE_INFO);
-        self.elemPreview = elemDocument.querySelector('#' + ID.ELEM_DEVICE_PREVIEW);
+        self.elemStatus = elemDocument.querySelector('#' + CONFIG.ID.ELEM_DEVICE_STATUS);
+        self.elemInfo = elemDocument.querySelector('#' + CONFIG.ID.ELEM_DEVICE_INFO);
+        self.elemPreview = elemDocument.querySelector('#' + CONFIG.ID.ELEM_DEVICE_PREVIEW);
     }
 }
 VirbControlStatus.prototype.clear = function () {
     [this.elemStatus, this.elemPreview, this.elemInfo].forEach(function (elem) {
         while (elem.childNodes.length) elem.removeChild(elem.firstChild);
     });
-    this.elemStatus.textContent = UI.DETECTING;
+    this.elemStatus.textContent = CONFIG.UI.DETECTING;
 };
 VirbControlStatus.prototype.renderConfigurationFeatureUI = function (feature, elemParent) {
     elemParent.appendChild(this.parseResponse(feature));
@@ -53,16 +53,16 @@ VirbControlStatus.prototype.parseResponse = function (response) {
                 dd = that.elemDocument.createElement('dd');
                 dt.textContent = key;
                 switch (key) {
-                    case KEY.STATUS_SPACE_AVAILABLE:
+                    case CONFIG.KEY.STATUS_SPACE_AVAILABLE:
                         dd.textContent = that.kilobytesToSpaceString(+response[key]);
                         break;
-                    case KEY.STATUS_SPACE_TOTAL:
+                    case CONFIG.KEY.STATUS_SPACE_TOTAL:
                         dd.textContent = that.kilobytesToSpaceString(+response[key]);
                         break;
-                    case KEY.STATUS_TIME_RECORDING:
+                    case CONFIG.KEY.STATUS_TIME_RECORDING:
                         dd.textContent = that.secondsToTimeString(+response[key]);
                         break;
-                    case KEY.STATUS_TIME_REMAINING:
+                    case CONFIG.KEY.STATUS_TIME_REMAINING:
                         dd.textContent = that.secondsToTimeString(+response[key]);
                         break;
                     default:

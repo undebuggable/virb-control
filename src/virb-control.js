@@ -1,4 +1,4 @@
-// import CONFIG from './virb-control-config.js'
+import CONFIG from './virb-control-config.js'
 import VirbControlRecord from './virb-control-record.js'
 import VirbControlForm from './virb-control-form.js'
 import VirbControlStatus from './virb-control-status.js'
@@ -28,8 +28,8 @@ export default function VirbControl (_window) {
             function (input) {
                 //Remove event listeners only from dynamically created inputs
                 if (input.type == 'button') return;
-                input.removeEventListener(EVENT_CLICK, virbControlForm.onInputClick, false);
-                input.removeEventListener(EVENT_TAP, virbControlForm.onInputClick, false);
+                input.removeEventListener(CONFIG.EVENT_CLICK, virbControlForm.onInputClick, false);
+                input.removeEventListener(CONFIG.EVENT_TAP, virbControlForm.onInputClick, false);
             }
         );
     }
@@ -53,7 +53,7 @@ export default function VirbControl (_window) {
         virbControlForm.clear();
         virbControlForm.showAllFieldsets(false);
         virbControlStatus.clear();
-        document.body.classList.add(CSS.DETECTING);
+        document.body.classList.add(CONFIG.CSS.DETECTING);
     }
     function requestSet (e) {
         //debugger;
@@ -63,17 +63,17 @@ export default function VirbControl (_window) {
             requestSet,
             command = e.detail
         ;
-        FETCH_INIT_SET.body = JSON.stringify(command);
-        requestSet = new Request(URL_VIRB, FETCH_INIT_SET);
+        CONFIG.FETCH_INIT_SET.body = JSON.stringify(command);
+        requestSet = new Request(CONFIG.URL_VIRB, CONFIG.FETCH_INIT_SET);
         fetch(requestSet).then(function(response) {
             //debugger;
             if (response.ok) {
                 var
-                    contentType = response.headers.get(HTTP_CONTENT_TYPE),
-                    contentLength = +response.headers.get(HTTP_CONTENT_LENGTH)
+                    contentType = response.headers.get(CONFIG.HTTP_CONTENT_TYPE),
+                    contentLength = +response.headers.get(CONFIG.HTTP_CONTENT_LENGTH)
                     ;
                 if(
-                    contentType && contentType.includes(MIME_JSON)
+                    contentType && contentType.includes(CONFIG.MIME_JSON)
                 ) {
                     return response.json();
                 } else {
@@ -95,29 +95,37 @@ export default function VirbControl (_window) {
     function watchStatus() {
         //debugger;
         if (NON_BLOCKING.IS_GETTING || NON_BLOCKING.IS_SETTING) return;
-        var requestStatus = new Request(URL_VIRB, FETCH_INIT_STATUS);
+        var requestStatus = new Request(CONFIG.URL_VIRB, CONFIG.FETCH_INIT_STATUS);
         fetch(requestStatus).then(function(response) {
             //debugger;
             if (response.ok) {
+
                 var
-                    contentType = response.headers.get(HTTP_CONTENT_TYPE)
-                    //contentLength = +response.headers.get(HTTP_CONTENT_LENGTH)
+                    contentType = response.headers.get(CONFIG.HTTP_CONTENT_TYPE)
+                    //contentLength = +response.headers.get(CONFIG.HTTP_CONTENT_LENGTH)
                 ;
                 if(
-                    contentType && contentType.includes(MIME_JSON)
+                    contentType && contentType.includes(CONFIG.MIME_JSON)
                 ) {
                     return response.json();
                 } else {
                     console.log('watchStatus\tok');
                 }
+
+
+                /*
+                [NOTE][FIXME] Be permissive, the camera easily gets overwhelmed and confused
+                 */
+                // return response.json();
+
             } else {
                 console.log('watchStatus\tnot ok\t' + response.status);
             }
         }).then(function(responseJson) {
             //debugger;
-            if (!responseJson) throw new Error(EXCEPTION.RESPONSE_EMPTY);
+            if (!responseJson) throw new Error(CONFIG.EXCEPTION.RESPONSE_EMPTY);
             if (isDetecting) {
-                document.body.classList.remove(CSS.DETECTING);
+                document.body.classList.remove(CONFIG.CSS.DETECTING);
                 fetchAll();
                 isDetecting = false;
             }
@@ -143,33 +151,33 @@ export default function VirbControl (_window) {
     function parseResponseConfiguration (responseJson) {
         //debugger;
         if (+responseJson.result == 1) {
-            if (RESPONSE.FEATURES in responseJson) {
+            if (CONFIG.RESPONSE.FEATURES in responseJson) {
                 eventListenersRemove();
                 virbControlForm.clear();
-                responseJson[RESPONSE.FEATURES].forEach(function (feature) {
+                responseJson[CONFIG.RESPONSE.FEATURES].forEach(function (feature) {
                     virbControlForm.renderConfigurationFeatureUI(feature);
                 });
                 virbControlForm.showAllFieldsets(true);
             }
-            if (RESPONSE.INFO in responseJson) {
+            if (CONFIG.RESPONSE.INFO in responseJson) {
                 eventListenersRemove();
                 virbControlStatus.elemInfo.innerHTML = '';
-                responseJson[RESPONSE.INFO].forEach(function (feature) {
+                responseJson[CONFIG.RESPONSE.INFO].forEach(function (feature) {
                     virbControlStatus.renderConfigurationFeatureUI(feature, virbControlStatus.elemInfo);
                 });
             }
-            if (RESPONSE.PREVIEW in responseJson) {
+            if (CONFIG.RESPONSE.PREVIEW in responseJson) {
                 eventListenersRemove();
                 virbControlStatus.elemPreview.innerHTML = '';
                 var
                     previewUrl = document.createElement('a'),
                     notice = document.createElement('span')
                 ;
-                previewUrl.title = responseJson[RESPONSE.PREVIEW];
-                previewUrl.textContent = responseJson[RESPONSE.PREVIEW];
-                previewUrl.href = responseJson[RESPONSE.PREVIEW];
+                previewUrl.title = responseJson[CONFIG.RESPONSE.PREVIEW];
+                previewUrl.textContent = responseJson[CONFIG.RESPONSE.PREVIEW];
+                previewUrl.href = responseJson[CONFIG.RESPONSE.PREVIEW];
                 virbControlStatus.elemPreview.appendChild(previewUrl);
-                notice.textContent = ' (' + UI.STREAMING_NOTICE + ')';
+                notice.textContent = ' (' + CONFIG.UI.STREAMING_NOTICE + ')';
                 virbControlStatus.elemPreview.appendChild(notice);
             }
         } else {
@@ -177,11 +185,12 @@ export default function VirbControl (_window) {
         }
     }
     function fetchAll() {
+        // debugger;
         NON_BLOCKING.IS_GETTING = true;
         var
-            requestFeatures = new Request(URL_VIRB, FETCH_INIT_FEATURES),
-            requestInfo = new Request(URL_VIRB, FETCH_INIT_INFO),
-            requestPreview = new Request(URL_VIRB, FETCH_INIT_PREVIEW)
+            requestFeatures = new Request(CONFIG.URL_VIRB, CONFIG.FETCH_INIT_FEATURES),
+            requestInfo = new Request(CONFIG.URL_VIRB, CONFIG.FETCH_INIT_INFO),
+            requestPreview = new Request(CONFIG.URL_VIRB, CONFIG.FETCH_INIT_PREVIEW)
         ;
         Promise.all([
             fetch(requestInfo),
@@ -190,11 +199,11 @@ export default function VirbControl (_window) {
         ]).then(function (responsePromises) {
             Promise.all(
                 responsePromises.map(function(responsePromiseItem) {
-                    var contentType = responsePromiseItem.headers.get(HTTP_CONTENT_TYPE);
+                    var contentType = responsePromiseItem.headers.get(CONFIG.HTTP_CONTENT_TYPE);
                     if (
                         responsePromiseItem.ok &&
                         contentType &&
-                        contentType.includes(MIME_JSON)
+                        contentType.includes(CONFIG.MIME_JSON)
                     ) {
                         return responsePromiseItem.json();
                     } else {
@@ -215,25 +224,17 @@ export default function VirbControl (_window) {
             console.log('fetchAll catch\touter\t' + error.message);
         });
     }
-    (function () {
+    (function constructor () {
         publicInterface = {
+            // requestSet: requestSet,
+            // exportStatusHistory: exportStatusHistory,
             // watchStatus: watchStatus,
-            // xhrStatus: xhrStatus
+            // detecting: detecting
         };
-        document.addEventListener(EVENT_INPUT_CLICK, requestSet);
-        document.addEventListener(EVENT_EXPORT_HISTORY, exportStatusHistory);
-        //xhrStatus.addEventListener(EVENT_STATE_CHANGE, onStateChangeStatus, false);
+        document.addEventListener(CONFIG.EVENT_INPUT_CLICK, requestSet);
+        document.addEventListener(CONFIG.EVENT_EXPORT_HISTORY, exportStatusHistory);
         detecting();
         WATCH_STATUS_INTERVAL_ID = setInterval(watchStatus, WATCH_STATUS_INTERVAL);
     })();
     return publicInterface;
 }
-(function init (_window) {
-    var window = _window;
-    function onWindowLoad () {
-        var virbControl = new VirbControl(window);
-    }
-    (function init () {
-        window.addEventListener(EVENT_LOAD, onWindowLoad);
-    })();
-})(window);
