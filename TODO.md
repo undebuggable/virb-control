@@ -5,4 +5,4 @@
 * [TASK] More explicit status messages when waiting for the connection with the camera
 * [TASK] create unit tests
 * [TASK] create end-to-end tests
-
+* [REFACTOR] embed the `script` element in the document's `head`, use `async` and `defer`
