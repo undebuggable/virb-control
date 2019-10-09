@@ -1,7 +1,7 @@
 virb-control
 ================
 
-Web browser client for the VIRB Elite Wireless API.
+Web browser client for the Garmin VIRB Elite Wireless API.
 
 Introduction
 ----------------
